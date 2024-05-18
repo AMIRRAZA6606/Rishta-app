@@ -4,7 +4,7 @@ import Home from './Home'
 
 const Index = () => {
     return (
-        <Layout isHeader={true} isFooter={false}>
+        <Layout isHeader={true} isFooter={true}>
             <Home />
         </Layout>)
 }
