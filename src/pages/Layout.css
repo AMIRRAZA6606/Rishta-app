@@ -1,0 +1,41 @@
+.header-main-con{
+    /* background-color: aquamarine; */
+    padding-inline: 141px;
+    padding-top: 17px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+
+}
+
+
+.header-main-con img{
+    width: 457px;
+}
+.header-main-con .navigation-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-weight: 400;
+    gap: 31px;
+}
+.header-main-con .navigation-bar a{
+        color: #752020;
+
+        text-decoration: none !important;
+
+}
+.header-main-con .navigation-bar .active{
+    font-weight: 600;
+}
+
+
+.header-main-con .navigation-bar .profile-icon{
+width: 20px;
+height: 20px;
+cursor: pointer;
+}
+.footer-main-con{
+    background-color: azure;
+}
