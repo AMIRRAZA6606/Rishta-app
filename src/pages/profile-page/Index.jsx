@@ -5,7 +5,7 @@ import './Profile.css'
 
 const Index = () => {
     return (
-        <Layout isHeader={true} isFooter={false}>
+        <Layout isHeader={true} isFooter={true}>
             <Profile />
         </Layout>
     )
