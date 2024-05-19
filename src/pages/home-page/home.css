@@ -70,7 +70,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         color: #757171;
          font-family: "Playfair Display", serif !important;
   font-optical-sizing: auto;
-
+margin-top: 12px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -88,6 +88,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
  font-family: "Playfair Display",sans-serif  !important;
   font-optical-sizing: auto;
+  margin-top: 12px;
 }
 
 .select-con-1{
@@ -100,7 +101,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     
 
 }
-.select-con-1 .input-label{
+.input-label{
     font-weight: 600;
     font-size: 32px;
     color: #9A2143;
@@ -231,3 +232,4 @@ padding-block: 30px;
 .best-match img{
 width: 123px;
 }
+

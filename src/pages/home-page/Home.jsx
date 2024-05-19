@@ -93,17 +93,27 @@ const Home = () => {
                 </div>
                 <div className='select-con'>
 
+                    <div className="select-1">
+                        <span className='input-label' >Gender</span>
+                        <CommonSelect options={genderOpts} handleChange={setSelectedGender}
+                            className="gender-select"
+                        />
+                    </div>
+                    <div className="select-1">
+                        <span className='input-label' >Start Age</span>
+                        <CommonInput options={ageOpts} handleChange={setSelectedAgeStart}
+                            className="age-select"
+                        />
+                    </div>
 
-                    <CommonSelect options={genderOpts} handleChange={setSelectedGender}
-                        className="gender-select"
-                    />
-                    <CommonInput options={ageOpts} handleChange={setSelectedAgeStart}
-                        className="age-select"
-                    />
 
-                    <CommonInput options={ageOpts} handleChange={setSelectedAgeEnd}
-                        className="age-select"
-                    />
+                    <div className="select-1">
+                        <span className='input-label' >End Age</span>
+                        <CommonInput options={ageOpts} handleChange={setSelectedAgeEnd}
+                            className="age-select"
+                        />
+                    </div>
+
                 </div>
                 <div className='select-con-1'>
 
