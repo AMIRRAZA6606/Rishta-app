@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import loginBgImg from "../../assets/images/loginBgImg.png";
 import rightFormImg from "../../assets/images/rightFormImg.png";
 import leftImgIcon from "../../assets/images/leftImgIcon.png";
 import "./LoginForm.css";
-import { login } from "../../services/auth/login";
+import { login } from "../../services/login";
 
 export const Loginform = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,13 +48,13 @@ export const Loginform = () => {
 
     try {
       const response = await login({ email, password });
-      console.log("Login successful:", response.data);
-      // Handle successful login (e.g., redirect to another page)
+      toast.success(response.data.message);
+
+      // store token in local storage
+      localStorage.setItem("jwtToken", response?.data?.data?.token);
+      navigate("/home");
     } catch (error) {
-      console.error("Login error:", error);
-      setErrors({
-        submit: "Login failed. Please check your credentials and try again.",
-      });
+      toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -116,6 +120,7 @@ export const Loginform = () => {
               Don't have an account? <a href="abc">Sign up for free</a>
             </span>
           </div>
+          <ToastContainer />
         </div>
       </div>
     </div>
