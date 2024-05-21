@@ -34,7 +34,6 @@ export const Loginform = () => {
         "Password must contain at least 6 characters, including letters and numbers";
     }
 
-    console.log("newErrors=========", newErrors);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;

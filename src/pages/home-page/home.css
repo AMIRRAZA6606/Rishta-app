@@ -141,7 +141,39 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
  font-family: "Playfair Display",sans-serif  !important;
 
 }
-.select-con-1 .tounge-select {
+.select-con-1 .tongue-select {
+
+    font-weight: 600;
+       width: 248px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 600;
+        margin-top: 12px;
+    font-size: 32px;
+    padding: 18px 40px ;
+    outline: none;
+        color: #757171;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ font-family: "Playfair Display",sans-serif  !important;
+
+}
+.select-con-1 .cast-select {
+
+    font-weight: 600;
+       width: 248px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 600;
+        margin-top: 12px;
+    font-size: 32px;
+    padding: 18px 40px ;
+    outline: none;
+        color: #757171;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ font-family: "Playfair Display",sans-serif  !important;
+
+}
+.select-con-1 .sect-select {
 
     font-weight: 600;
        width: 248px;

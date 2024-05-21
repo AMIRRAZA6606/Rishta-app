@@ -1,56 +1,71 @@
+
 import React, { useState } from 'react';
+// import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import homeImg from "../../assets/images/homeImg.png";
 import "./home.css";
 import CommonSelect from '../../components/CommonSelect';
 import CommonInput from '../../components/CommonInput';
-import bestMatches from "../../assets/images/best-matches.png"
-import privacy from "../../assets/images/privacy.png"
-import verifiedProfile from "../../assets/images/verified-profile.png"
+import bestMatches from "../../assets/images/best-matches.png";
+import privacy from "../../assets/images/privacy.png";
+import verifiedProfile from "../../assets/images/verified-profile.png";
+
 const genderOpts = [
     { value: '', label: 'Select' },
-
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
 ];
 
-const ageOpts = [
+const startAgeOpts = [
     { value: '', label: 'Select' },
-
-    { value: 18, label: 18 },
-    { value: 19, label: 19 },
     { value: 20, label: 20 },
-
- 
+    { value: 21, label: 21 },
+    { value: 22, label: 22 },
+    { value: 23, label: 23 },
+    { value: 24, label: 24 },
+    { value: 25, label: 25 },
+    { value: 26, label: 26 },
+    { value: 27, label: 27 },
+    { value: 28, label: 28 },
+    { value: 29, label: 29 },
+    { value: 30, label: 30 },
 ];
 
-
+const endAgeOpts = [
+    { value: '', label: 'Select' },
+    { value: 20, label: 20 },
+    { value: 21, label: 21 },
+    { value: 22, label: 22 },
+    { value: 23, label: 23 },
+    { value: 24, label: 24 },
+    { value: 25, label: 25 },
+    { value: 26, label: 26 },
+    { value: 27, label: 27 },
+    { value: 28, label: 28 },
+    { value: 29, label: 29 },
+    { value: 30, label: 30 },
+    { value: 40, label: 40 },
+];
 
 const religionOpts = [
     { value: '', label: 'Select' },
-    { value: 'hindu', label: 'Hindu' },
-    { value: 'muslim', label: 'Muslim' },
-    { value: 'christian', label: 'Christian' },
-    { value: 'sikh', label: 'Sikh' },
-    { value: 'jain', label: 'Jain' },
+    { value: 'hinduism', label: 'Hinduism' },
+    { value: 'islam', label: 'Islam' },
+    { value: 'christianity', label: 'Christianity' },
+    { value: 'sikhism', label: 'Sikhism' },
+    { value: 'jainism', label: 'Jainism' },
     { value: 'buddhist', label: 'Buddhist' },
-    { value: 'parsi', label: 'Parsi' },
-    { value: 'other', label: 'Other' },
-
 ];
-const toungeOpts = [
+
+const tongueOpts = [
     { value: '', label: 'Select' },
     { value: 'punjabi', label: 'Punjabi' },
-    { value: "sindhi", label: "Singhi" },
+    { value: "sindhi", label: "Sindhi" },
     { value: 'hindi', label: 'Hindi' },
+    { value: 'urdu', label: 'Urdu' },
     { value: 'english', label: 'English' },
-    { value: 'bengali', label: 'Bengali' },
-    { value: 'gujarati', label: 'Gujarati' },
-    { value: 'tamil', label: 'Tamil' },
-    { value: 'telugu', label: 'Telugu' },
-    { value: 'malayalam', label: 'Malayalam' },
-    { value: 'marathi', label: 'Marathi' },
-    { value: 'kannada', label: 'Kannada' },
 ];
+
 const heightOpts = [
     { value: '', label: 'Select' },
     { value: "5'6", label: "5'6" },
@@ -59,33 +74,102 @@ const heightOpts = [
     { value: "5'9", label: "5'9" },
     { value: "5'10", label: "5'10" },
     { value: "5'11", label: "5'11" },
+    { value: "5'12", label: "5'12" },
 ];
 
-const livingOpts = [
+const countryOpts = [
     { value: '', label: 'Select' },
     { value: "pakistan", label: "Pakistan" },
     { value: "india", label: "India" },
     { value: "china", label: "China" },
     { value: "bangladesh", label: "Bangladesh" },
     { value: "nepal", label: "Nepal" },
-
 ];
 
+const castOpts = [
+    { value: '', label: 'Select' },
+    { value: "sayyid", label: "Sayyid" },
+    { value: "rajput", label: "Rajput" },
+    { value: "sheikh", label: "Sheikh" },
+    { value: "pathan", label: "Pathan" },
+    { value: "moguls", label: "Moguls" },
+];
 
+const sectOpts = [
+    { value: '', label: 'Select' },
+    { value: "sunni", label: "Sunni" },
+    { value: "wahabi", label: "Wahabi" },
+    { value: "deobandi", label: "Deoandi" },
+    { value: "shia", label: "Shia" },
+]
 
 const Home = () => {
+    const [selectedGender, setSelectedGender] = useState('');
+    const [selectedAgeStart, setSelectedAgeStart] = useState('');
+    const [selectedAgeEnd, setSelectedAgeEnd] = useState('');
+    const [selectedReligion, setSelectedReligion] = useState('');
+    const [selectedCountry, setSelectedCountry] = useState('');
+    const [selectedTongue, setSelectedTongue] = useState('');
+    const [selectedCast, setSelectedCast] = useState('');
+    const [selectedSect, setSelectedSect] = useState('');
+    const [selectedHeight, setSelectedHeight] = useState('');
+    const [errors, setErrors] = useState({});
 
-    const [selectedGender, setSelectedGender] = useState(null);
 
-    const [selectedAgeStart, setSelectedAgeStart] = useState(null);
+    const validateForm = () => {
+        const newErrors = {};
+        if (!selectedGender) newErrors.gender = 'Gender is required';
+        if (!selectedAgeStart) newErrors.ageStart = 'Start Age is required';
+        if (!selectedAgeEnd) newErrors.ageEnd = 'End Age is required';
+        if (!selectedReligion) newErrors.religion = 'Religion is required';
+        if (!selectedCountry) newErrors.country = 'Country is required';
+        if (!selectedTongue) newErrors.tongue = 'Tongue is required';
+        if (!selectedCast) newErrors.cast = 'Cast is required';
+        if (!selectedSect) newErrors.sect = 'Sect is required';
+        if (!selectedHeight) newErrors.height = 'Height is required';
+        return newErrors;
+    };
 
-    const [selectedAgeEnd, setSelectedAgeEnd] = useState(null);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+        } else {
+            try {
+                console.log('data for ap-----------',{gender: selectedGender,
+                ageStart: selectedAgeStart,
+                ageEnd: selectedAgeEnd,
+                religion: selectedReligion,
+                country: selectedCountry,
+                tongue: selectedTongue,
+                cast: selectedCast,
+                sect: selectedSect,
+                height: selectedHeight});
+                // const response = await axios.post('http://localhost:5000/api/submit', {
+                //     gender: selectedGender,
+                //     ageStart: selectedAgeStart,
+                //     ageEnd: selectedAgeEnd,
+                //     religion: selectedReligion,
+                //     country: selectedCountry,
+                //     tongue: selectedTongue,
+                //     cast: selectedCast,
+                //     sect: selectedSect,
+                //     height: selectedHeight,
+                // });
+                // if (response.status === 200) {
+                //     // history.push('/connections');
+                // }
+            } catch (error) {
+                console.error('Error submitting form', error);
+            }
+        }
+    };
 
     return (
         <div className='home-main-con'>
             <img className='main-bg-img' src={homeImg} alt="" />
             <div className='sub-con'>
-
                 <div className='heading-con'>
                     <span className='child-1'>Trusted Matrimony</span>
                     <span className='child-2'>&</span>
@@ -96,106 +180,80 @@ const Home = () => {
                     <span className='ch-1'>I’M LOOKING FOR A</span>
                     <span className='ch-2'>aged</span>
                 </div>
-                <div className='select-con'>
-
-                    <div className="select-1">
-                        <span className='input-label' >Gender</span>
-                        <CommonSelect options={genderOpts} handleChange={setSelectedGender}
-                            className="gender-select"
-                        />
+                <form onSubmit={handleSubmit}>
+                    <div className='select-con'>
+                        <div className="select-1">
+                            <span className='input-label'>Gender</span>
+                            <CommonSelect options={genderOpts} handleChange={setSelectedGender} className="gender-select" />
+                            {errors.gender && <div className='error'>{errors.gender}</div>}
+                        </div>
+                        <div className="select-1">
+                            <span className='input-label'>Start Age</span>
+                            <CommonSelect options={startAgeOpts} handleChange={setSelectedAgeStart} className="age-select" />
+                            {errors.ageStart && <div className='error'>{errors.ageStart}</div>}
+                        </div>
+                        <div className="select-1">
+                            <span className='input-label'>End Age</span>
+                            <CommonSelect options={endAgeOpts} handleChange={setSelectedAgeEnd} className="age-select" />
+                            {errors.ageEnd && <div className='error'>{errors.ageEnd}</div>}
+                        </div>
                     </div>
-                    <div className="select-1">
-                        <span className='input-label' >Start Age</span>
-                        <CommonInput options={ageOpts} handleChange={setSelectedAgeStart}
-                            className="age-select"
-                        />
+                    <div className='select-con-1'>
+                        <div className="select-1">
+                            <span className='input-label'>Religion</span>
+                            <CommonSelect options={religionOpts} handleChange={setSelectedReligion} className="religion-select" />
+                            {errors.religion && <div className='error'>{errors.religion}</div>}
+                        </div>
+                        <div className="select-2">
+                            <span className='input-label'>Country</span>
+                            <CommonSelect options={countryOpts} handleChange={setSelectedCountry} className="living-select" />
+                            {errors.country && <div className='error'>{errors.country}</div>}
+                        </div>
+                        <div className="select-3">
+                            <span className='input-label'>Tongue</span>
+                            <CommonSelect options={tongueOpts} handleChange={setSelectedTongue} className="tongue-select" />
+                            {errors.tongue && <div className='error'>{errors.tongue}</div>}
+                        </div>
                     </div>
-
-
-                    <div className="select-1">
-                        <span className='input-label' >End Age</span>
-                        <CommonInput options={ageOpts} handleChange={setSelectedAgeEnd}
-                            className="age-select"
-                        />
+                    <div className='select-con-1'>
+                        <div className="select-1">
+                            <span className='input-label'>Cast</span>
+                            <CommonSelect options={castOpts} handleChange={setSelectedCast} className="cast-select" />
+                            {errors.cast && <div className='error'>{errors.cast}</div>}
+                        </div>
+                        <div className="select-2">
+                            <span className='input-label'>Sect</span>
+                            <CommonSelect options={sectOpts} handleChange={setSelectedSect} className="sect-select" />
+                            {errors.sect && <div className='error'>{errors.sect}</div>}
+                        </div>
+                        <div className="select-3">
+                            <span className='input-label'>Height</span>
+                            <CommonSelect options={heightOpts} handleChange={setSelectedHeight} className="height-select" />
+                            {errors.height && <div className='error'>{errors.height}</div>}
+                        </div>
                     </div>
-
-                </div>
-                <div className='select-con-1'>
-
-                    <div className="select-1">
-                        <span className='input-label' >Religion</span>
-                        <CommonSelect options={religionOpts}
-                            handleChange={setSelectedGender}
-                            className="religion-select"
-                        />
-                    </div>
-
-                    <div className="select-2">
-                        <span className='input-label'>And living in</span>
-                        <CommonSelect options={livingOpts} handleChange={setSelectedAgeEnd}
-                            className="living-select"
-                        />
-                    </div>
-
-                    <div className="select-3">
-                        <span className='input-label'>Tounge</span>
-                        <CommonSelect options={toungeOpts} handleChange={setSelectedGender}
-                            className="tounge-select"
-                        />
-                    </div>
-                </div>
-
-                <div className='select-con-1'>
-
-                    <div className="select-1">
-                        <span className='input-label' >Cast</span>
-                        <CommonSelect options={religionOpts}
-                            handleChange={setSelectedGender}
-                            className="religion-select"
-                        />
-                    </div>
-
-                    <div className="select-2">
-                        <span className='input-label'>Coummunity</span>
-                        <CommonSelect options={livingOpts} handleChange={setSelectedAgeEnd}
-                            className="living-select"
-                        />
-                    </div>
-
-                    <div className="select-3">
-                        <span className='input-label'>Height</span>
-                        <CommonSelect options={heightOpts} handleChange={setSelectedGender}
-                            className="height-select"
-                        />
+                    <button type='submit' className='lets-begin-btn'>Let's Begin</button>
+                </form>
+                <div className='trust-by-million-con'>
+                    <div className='heading'>Trust By Millions</div>
+                    <div className='facility-con'>
+                        <div className='best-match'>
+                            <img src={bestMatches} alt="" />
+                            <span>Best Matches</span>
+                        </div>
+                        <div className='best-match'>
+                            <img src={verifiedProfile} alt="" />
+                            <span>Verified Profile</span>
+                        </div>
+                        <div className='best-match'>
+                            <img src={privacy} alt="" />
+                            <span>100% Privacy</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button className='lets-begin-btn'>Let's Begin
-            </button>
-            <div className='trust-by-million-con'>
-                <div className='heading'>
-                    Trust By Millions
-
-                </div>
-                <div className='facility-con'>
-                    <div className='best-match'>
-                        <img src={bestMatches} alt="" />
-                        <span>Best Matches</span>
-                    </div>
-                    <div className='best-match'>
-                        <img src={verifiedProfile} alt="" />
-                        <span>Verified Profile</span>
-                    </div>
-                    <div className='best-match'>
-                        <img src={privacy} alt="" />
-                        <span>100% Privacy</span>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
