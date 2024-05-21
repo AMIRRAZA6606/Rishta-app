@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.connection-main-con{
+         font-family: "Poppins", sans-serif !important;
+  font-style: normal !important;
+}
+
+.connection-main-con{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 93px;
+    padding-right: 115px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+
+}
+.connection-list-con{
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+    width: 100%;
+
+
+}
+.connection-con{
+    padding: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+
+
+}
+.connection-con .connection-img{
+    width: 25%;
+}
+.connection-img img{
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+}
+
+.connection-con .connection-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 50%;
+    padding-left: 90px;
+    font-size: 12px;
+    font-weight: 600;
+    padding-right: 24px;
+    border-right: 4px solid #CA3C5E;
+
+}
+
+.connection-info .lastseen-con{
+    display: flex;
+    gap: 32px;
+}
+.connection-info .border-1{
+    width: 100%;
+    height: 4px;
+    background: #CA3C5E;
+    margin-block: 10px;
+}
+.desc-con-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 300px;
+
+}
+
+.connection-info .info-con{
+    display:  flex;
+    width: 100%;
+    justify-content: space-between;
+    /* gap: 20px; */
+
+}
+.connection-info .desc-con{
+    padding-top: 4px;
+width: 70%;
+
+}
+.connection-main-con .connection-status-con{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding-left: 60px;
+font-size: 12px;
+font-weight: 600;
+gap: 23px;
+}
+.connection-status-con img{
+    width: 60px;
+}
+
+.pagination{
+    display:  flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+.pagination div{
+padding:  17px 36px;
+height: 70px;
+background: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+.pagination .active{
+    background: #a4a4a4;
+
+}

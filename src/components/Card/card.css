@@ -1,0 +1,36 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.main{
+    max-width: 517px;
+    border: 1px solid #F51E92;
+    padding: 39px 31px;
+    border-radius: 10px;
+  box-shadow: 0.5px 0.5px 3px 0.5px gray
+}
+.banner2-image img{
+    width: 452px;
+}
+.banner2-content{
+      width: 473px;;
+}
+#span1{
+
+    font-size: 40px;
+}
+.banner2-content p{
+    font-size: 32px;
+    color: black;
+    font-family: "Playfair Display", serif;
+    padding-top: 10px;
+}
+.banner2-content p span{
+    color: #9A2143;
+}
