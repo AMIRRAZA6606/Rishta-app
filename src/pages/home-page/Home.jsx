@@ -7,7 +7,7 @@ import CommonSelect from "../../components/CommonSelect";
 import bestMatches from "../../assets/images/best-matches.png";
 import privacy from "../../assets/images/privacy.png";
 import verifiedProfile from "../../assets/images/verified-profile.png";
-import { searchProfiles } from "../../services/profile";
+import { searchProfiles } from "../../services/profiles";
 
 const genderOpts = [
   { value: "", label: "Select" },

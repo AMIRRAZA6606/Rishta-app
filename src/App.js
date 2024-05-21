@@ -17,7 +17,7 @@ function App() {
         <Route path="/message" element={<Message />} />
         <Route path="/search" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:profileId" element={<Profile />} />
         <Route path="/profiles" element={<Profiles />} />
         {/* <Route path="/contact-us" element={<ContactUs />} /> */}
       </Routes>
