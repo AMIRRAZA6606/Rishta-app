@@ -51,7 +51,9 @@ export const Loginform = () => {
       toast.success(response.data.message);
 
       // store token in local storage
+      localStorage.setItem("userId", response?.data?.data?.userId);
       localStorage.setItem("jwtToken", response?.data?.data?.token);
+      window.dispatchEvent(new Event("storage"));
       navigate("/home");
     } catch (error) {
       toast.error(error?.response?.data?.message);
