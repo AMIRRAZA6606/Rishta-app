@@ -30,12 +30,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log("error axios response------------------", error);
     if (error?.response?.data?.message === "Invalid/Expired token.") {
       localStorage.removeItem("jwtToken");
-      // Redirect to login page
-      // history.push("/");
-      // navigate.push("/");
+      localStorage.removeItem("userId");
       window.location.href = "/";
     }
     return Promise.reject(error);
