@@ -1,39 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import profilePicture from "../../assets/images/profile-picture.png";
-import { getProfileDetails } from "../../services/profileDetails";
+import {
+  getProfileDetails,
+  sendFriendRequest,
+} from "../../services/profileDetails";
 
 const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfileData] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
-  const [error, setError] = useState(null); // Add error state
+  const [requestBtnText, setRequestBtnText] = useState("Request +");
 
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         const response = await getProfileDetails(profileId);
-        console.log("API response:", response);
-        setProfileData(response?.data?.data);
+        setProfileData(response?.data?.data[0]);
         toast.success("Profile details fetched successfully!");
       } catch (err) {
-        console.error("Error fetching profile data:", err);
-        setError(err);
         toast.error("Something went wrong, try again later");
-      } finally {
-        setLoading(false); // Set loading to false after fetch is complete
       }
     };
 
     fetchProfileData();
   }, [profileId]);
 
-  useEffect(() => {
-    if (profile) {
-      console.log("Profile data updated:", profile);
+  const sendRequest = async (profileId) => {
+    setRequestBtnText("Pending...");
+    try {
+      const userId = localStorage.getItem("userId");
+      const data = {
+        from: userId,
+        to: profileId,
+      };
+
+      const response = await sendFriendRequest(data);
+      toast.info(
+        response?.data?.message
+        // "Friend request sent successfully!"
+      );
+    } catch (err) {
+      toast.error("Something went wrong, try again later");
     }
-  }, [profile]);
+  };
 
   const convertAgeToYearsAndMonths = (age) => {
     if (!age) {
@@ -45,9 +54,6 @@ const Profile = () => {
     const months = Math.round((roundedAge - years) * 12);
     return `${years} yrs, ${months} months`;
   };
-
-  if (loading) return <div>Loading...</div>; // Display a loading message while data is being fetched
-  if (error) return <div>Error: {error.message}</div>; // Display an error message if there is an error
 
   return (
     <div className="profile-main-con">
@@ -63,7 +69,9 @@ const Profile = () => {
               {convertAgeToYearsAndMonths(profile?.age)}
             </div>
           </div>
-          <button>Request +</button>
+          <button onClick={() => sendRequest(profile._id)}>
+            {requestBtnText}
+          </button>
         </div>
       </div>
       <div className="details-con">
@@ -88,7 +96,7 @@ const Profile = () => {
           </div>
           <div className="detail-list">
             <span className="title">Education :</span>
-            <span>{profile?.education}</span>
+            <span>{profile?.education || "N/A"}</span>
           </div>
           <div className="detail-list">
             <span className="title">Mother tongue :</span>
