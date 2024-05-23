@@ -2,9 +2,9 @@ import React from 'react'
 import rishtaLogo from "../assets/images/rishtaLogo.png"
 import { NavLink } from 'react-router-dom'
 import profileIcon from "../assets/icons/profileIcon.png"
-const Header = () => {
+const Header = ({ bgColor }) => {
     return (
-        <div className='header-main-con'>
+        <div className='header-main-con'  style={{ background: bgColor }}>
 
             <img src={rishtaLogo} alt="" />
             <div className='navigation-bar'>
@@ -12,7 +12,7 @@ const Header = () => {
                 <NavLink to={"/message"}>Message</NavLink>
                 <NavLink to={"/search"}>Search</NavLink>
                 <NavLink to={"/about"}>About</NavLink>
-                <NavLink to={"/connections"}>Connections</NavLink>
+                <NavLink to={"/profiles"}>Connections</NavLink>
                 <NavLink to={"/contact-us"}>Contact Us</NavLink>
                 <NavLink to={"/profile"}>Profile</NavLink>
                 <NavLink><img src={profileIcon} alt="" className='profile-icon' /></NavLink>
