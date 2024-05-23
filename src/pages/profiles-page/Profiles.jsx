@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { ToastContainer, toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 import connectSticker from "../../assets/images/connectSticker.png";
 import "./paginate.css";
 import { searchProfiles } from "../../services/profiles";
@@ -11,44 +12,47 @@ const ProfilesListing = () => {
   const [profiles, setProfiles] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  // const location = useLocation();
-  // const { profiles } = location.state || { profiles: [] };
+  const [loading, setLoading] = useState(false);
 
-  const perPage =5
-  const fetchProfiles = async () => {
+  const fetchProfiles = async (page = 1) => {
+    setLoading(true);
+    let data = JSON.parse(localStorage.getItem("filters")) || {};
+    data.page = page;
+    data.pageSize = 1; // Set the page size here or retrieve from local storage if needed
+
     try {
-      const data = JSON.parse(localStorage.getItem("filters"));
       const response = await searchProfiles(data);
-      if (!response?.data?.data?.length) {
+      if (!response?.data?.data?.profiles?.length) {
         toast.info("No matching records found, try different filters");
       } else {
-        setProfiles(response?.data?.data);
-        setPageCount(Math.ceil(data.totalItems / perPage));
-        setCurrentPage(data.currentPage - 1);
-        setItemsPerPage(data.itemsPerPage);
+        const { profiles, totalPages, currentPage } = response.data.data;
+        setProfiles(profiles);
+        setPageCount(totalPages);
+        setCurrentPage(currentPage - 1);
         toast.success("Profiles fetched successfully!");
+        // Update the current page in local storage
+        data.page = currentPage;
+        localStorage.setItem("filters", JSON.stringify(data));
       }
     } catch (error) {
-      toast.error("Something went wrong please try again!");
+      toast.error("Something went wrong, please try again!");
+    } finally {
+      setLoading(false);
     }
   };
-  useEffect(async () => {
-    const response = await fetchProfiles();
+
+  useEffect(() => {
+    fetchProfiles();
+
+    // Cleanup function to clear filters from local storage
+    return () => {
+      localStorage.removeItem("filters");
+    };
   }, []);
 
-  // const items = profiles;
-  // const itemsPerPage = 1;
-
-  // const [currentItems, setCurrentItems] = useState(items.slice(0, itemsPerPage));
-  // const [pageCount, setPageCount] = useState(Math.ceil(items.length / itemsPerPage));
-  // const [itemOffset, setItemOffset] = useState(0);
-
   const handlePageClick = (event) => {
-    console.log("event", event);
-    // const newOffset = (event.selected * itemsPerPage) % items.length;
-    // setItemOffset(newOffset);
-    // setCurrentItems(items.slice(newOffset, newOffset + itemsPerPage));
+    const selectedPage = event.selected + 1; // ReactPaginate is zero-based, but our API is one-based
+    fetchProfiles(selectedPage);
   };
 
   const convertAgeToYearsAndMonths = (age) => {
@@ -65,9 +69,24 @@ const ProfilesListing = () => {
   return (
     <>
       <div className="connection-main-con">
-        <div className="connection-list-con">
-          {profiles?.map((profile, index) => {
-            return (
+        {loading ? (
+          <div className="loader">
+            <Oval
+              height={80}
+              width={80}
+              color="#4fa94d"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#4fa94d"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          </div>
+        ) : (
+          <div className="connection-list-con">
+            {profiles?.map((profile, index) => (
               <div key={index} className="connection-con">
                 <div className="connection-img">
                   <img src={profile.image} alt="" />
@@ -112,9 +131,9 @@ const ProfilesListing = () => {
                   <p onClick={() => handleClick(profile._id)}>Connect Now</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
       <ToastContainer />
       <div className="pagination">

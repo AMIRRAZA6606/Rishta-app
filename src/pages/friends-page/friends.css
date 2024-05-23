@@ -23,6 +23,7 @@
   align-items: center;
   gap: 17px;
   width: 100%;
+  margin: 35px;
 }
 .connection-status-con p {
   cursor: pointer; /* Change cursor to hand shape */

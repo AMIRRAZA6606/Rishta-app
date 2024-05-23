@@ -43,55 +43,101 @@ const FriendsListing = () => {
   return (
     <>
       <div className="connection-main-con">
-        <div className="connection-list-con">
-          {friends?.map((friend, index) => {
-            return (
-              <div key={index} className="connection-con">
-                <div className="connection-img">
-                  <img src={friend.image} alt="" />
-                </div>
-                <div className="connection-info">
-                  <p>Name: {`${friend?.firstName} ${friend?.lastName}`}</p>
-                  <p>Nickname: {`${friend?.nickName}`}</p>
-                  <div className="lastseen-con">
-                    {/* <p>Online {connection.lastSeen} ago</p> */}
-                    {/* <p>You & Her</p> */}
+        <div className="my-friend-class">
+          <div className="connection-list-con">
+            {friends?.map((friend, index) => {
+              return (
+                <div key={index} className="connection-con">
+                  <div className="connection-img">
+                    <img src={friend.image} alt="" />
                   </div>
-                  <div className="border-1"></div>
-                  <div className="desc-con-wrapper">
-                    <div className="info-con">
-                      <p>
-                        {convertAgeToYearsAndMonths(friend.age)},{" "}
-                        {`${friend.height.feet} feet, ${friend.height.inches} inches`}
-                      </p>
-                      {/* <p>{connection.marriedStatus}</p> */}
+                  <div className="connection-info">
+                    <p>Name: {`${friend?.firstName} ${friend?.lastName}`}</p>
+                    <p>Nickname: {`${friend?.nickName}`}</p>
+                    <div className="lastseen-con">
+                      {/* <p>Online {connection.lastSeen} ago</p> */}
+                      {/* <p>You & Her</p> */}
                     </div>
-                    <div className="info-con">
-                      <p>{friend.tongue}</p>
-                      <p>{friend.address}</p>
+                    <div className="border-1"></div>
+                    <div className="desc-con-wrapper">
+                      <div className="info-con">
+                        <p>
+                          {convertAgeToYearsAndMonths(friend.age)},{" "}
+                          {`${friend.height.feet} feet, ${friend.height.inches} inches`}
+                        </p>
+                        {/* <p>{connection.marriedStatus}</p> */}
+                      </div>
+                      <div className="info-con">
+                        <p>{friend.tongue}</p>
+                        <p>{friend.address}</p>
+                      </div>
+                      <div className="info-con">
+                        <p>
+                          {friend.religion}, {friend.cast}
+                        </p>
+                        {/* <p>{connection.occupation}</p> */}
+                      </div>
+                      <p>{friend.education ? friend.education : ""}</p>
                     </div>
-                    <div className="info-con">
-                      <p>
-                        {friend.religion}, {friend.cast}
-                      </p>
-                      {/* <p>{connection.occupation}</p> */}
+                    <div className="desc-con">
+                      {/* <p>{connection.desc}</p> */}
                     </div>
-                    <p>{friend.education ? friend.education : ""}</p>
                   </div>
-                  <div className="desc-con">
-                    {/* <p>{connection.desc}</p> */}
+                  <div className="connection-status-con">
+                    <p onClick={() => handleClick(friend._id)}>Chat</p>
+                    <img src={connectSticker} alt="" />
                   </div>
                 </div>
-                <div className="connection-status-con">
-                  <p onClick={() => handleClick(friend._id)}>
-                    Like this profile?
-                  </p>
-                  <img src={connectSticker} alt="" />
-                  <p onClick={() => handleClick(friend._id)}>Connect Now</p>
+              );
+            })}
+          </div>
+          <div className="connection-list-con">
+            {friends?.map((friend, index) => {
+              return (
+                <div key={index} className="connection-con">
+                  <div className="connection-img">
+                    <img src={friend.image} alt="" />
+                  </div>
+                  <div className="connection-info">
+                    <p>Name: {`${friend?.firstName} ${friend?.lastName}`}</p>
+                    <p>Nickname: {`${friend?.nickName}`}</p>
+                    <div className="lastseen-con">
+                      {/* <p>Online {connection.lastSeen} ago</p> */}
+                      {/* <p>You & Her</p> */}
+                    </div>
+                    <div className="border-1"></div>
+                    <div className="desc-con-wrapper">
+                      <div className="info-con">
+                        <p>
+                          {convertAgeToYearsAndMonths(friend.age)},{" "}
+                          {`${friend.height.feet} feet, ${friend.height.inches} inches`}
+                        </p>
+                        {/* <p>{connection.marriedStatus}</p> */}
+                      </div>
+                      <div className="info-con">
+                        <p>{friend.tongue}</p>
+                        <p>{friend.address}</p>
+                      </div>
+                      <div className="info-con">
+                        <p>
+                          {friend.religion}, {friend.cast}
+                        </p>
+                        {/* <p>{connection.occupation}</p> */}
+                      </div>
+                      <p>{friend.education ? friend.education : ""}</p>
+                    </div>
+                    <div className="desc-con">
+                      {/* <p>{connection.desc}</p> */}
+                    </div>
+                  </div>
+                  <div className="connection-status-con">
+                    <p onClick={() => handleClick(friend._id)}>Chat</p>
+                    <img src={connectSticker} alt="" />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
       <ToastContainer />
