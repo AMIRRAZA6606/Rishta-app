@@ -175,21 +175,25 @@ const Home = () => {
           cast: selectedCast,
           sect: selectedSect,
           height: selectedHeight,
+          page:1,
+          pageSize: 1
         };
-        const response = await searchProfiles(data);
-        if (!response?.data?.data?.length) {
-          toast.info("No matching records found, try different filters");
-        } else {
-          // Filter out profiles that user does not se his own profile
-          const profiles = response?.data?.data;
-          navigate("/profiles", {
-            state: {
-              profiles: profiles.filter(
-                (profile) => profile._id !== localStorage.getItem("userId")
-              ),
-            },
-          });
-        }
+        localStorage.setItem('filters', JSON.stringify(data))
+        navigate("/profiles")
+        // const response = await searchProfiles(data);
+        // if (!response?.data?.data?.length) {
+        //   toast.info("No matching records found, try different filters");
+        // } else {
+        //   // Filter out profiles that user does not se his own profile
+        //   const profiles = response?.data?.data;
+        //   navigate("/profiles", {
+        //     state: {
+        //       profiles: profiles.filter(
+        //         (profile) => profile._id !== localStorage.getItem("userId")
+        //       ),
+        //     },
+        //   });
+        // }
       } catch (error) {
         toast.error(error?.response?.data?.message);
       }

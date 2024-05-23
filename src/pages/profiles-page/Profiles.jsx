@@ -1,13 +1,55 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
+import { ToastContainer, toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
 import connectSticker from "../../assets/images/connectSticker.png";
-import paginationIcon from "../../assets/icons/paginationIcon.png";
+import "./paginate.css";
+import { searchProfiles } from "../../services/profiles";
 
 const ProfilesListing = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { profiles } = location.state || { profiles: [] };
+  const [profiles, setProfiles] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  // const location = useLocation();
+  // const { profiles } = location.state || { profiles: [] };
+
+  const perPage =5
+  const fetchProfiles = async () => {
+    try {
+      const data = JSON.parse(localStorage.getItem("filters"));
+      const response = await searchProfiles(data);
+      if (!response?.data?.data?.length) {
+        toast.info("No matching records found, try different filters");
+      } else {
+        setProfiles(response?.data?.data);
+        setPageCount(Math.ceil(data.totalItems / perPage));
+        setCurrentPage(data.currentPage - 1);
+        setItemsPerPage(data.itemsPerPage);
+        toast.success("Profiles fetched successfully!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong please try again!");
+    }
+  };
+  useEffect(async () => {
+    const response = await fetchProfiles();
+  }, []);
+
+  // const items = profiles;
+  // const itemsPerPage = 1;
+
+  // const [currentItems, setCurrentItems] = useState(items.slice(0, itemsPerPage));
+  // const [pageCount, setPageCount] = useState(Math.ceil(items.length / itemsPerPage));
+  // const [itemOffset, setItemOffset] = useState(0);
+
+  const handlePageClick = (event) => {
+    console.log("event", event);
+    // const newOffset = (event.selected * itemsPerPage) % items.length;
+    // setItemOffset(newOffset);
+    // setCurrentItems(items.slice(newOffset, newOffset + itemsPerPage));
+  };
 
   const convertAgeToYearsAndMonths = (age) => {
     const roundedAge = Math.round(age * 100) / 100;
@@ -74,13 +116,27 @@ const ProfilesListing = () => {
           })}
         </div>
       </div>
+      <ToastContainer />
       <div className="pagination">
-        <div className="active">1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>
-          <img src={paginationIcon} alt="" />
-        </div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          activeClassName="active"
+        />
       </div>
     </>
   );
