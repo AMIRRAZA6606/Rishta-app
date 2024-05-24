@@ -3,7 +3,7 @@ import "./App.css";
 import { Loginform } from "./auth/LoginForm/Loginform";
 import Profile from "./pages/profile-page/Index";
 import Home from "./pages/home-page/Index";
-import Message from "./pages/message-page/Index";
+import Chat from "./pages/message-page/Index";
 import About from "./pages/about-page/Index";
 import Profiles from "./pages/profiles-page/Index";
 import Friends from "./pages/friends-page/Index";
@@ -20,8 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loginform />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/message" element={<Message />} />
-          <Route path="/search" element={<Home />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile/:profileId" element={<Profile />} />
           <Route path="/profiles" element={<Profiles />} />

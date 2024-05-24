@@ -19,11 +19,9 @@ const Header = ({ bgColor }) => {
         <img src={rishtaLogo} alt="" />
         <div className="navigation-bar">
           <NavLink to={"/home"}>Home</NavLink>
-          <NavLink to={"/message"}>Message</NavLink>
-          <NavLink to={"/search"}>Search</NavLink>
+          <NavLink to={"/chat"}>Chat</NavLink>
           <NavLink to={"/about"}>About</NavLink>
           <NavLink to={"/friends"}>Friends</NavLink>
-          <NavLink to={"/connections"}>Connections</NavLink>
           <div className="header-connection-con">
             <NavLink to={"/connections"}>connection</NavLink>
             <span className="connection-dropdownIcon">

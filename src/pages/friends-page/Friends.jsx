@@ -2,33 +2,45 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { ToastContainer, toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
-import connectSticker from "../../assets/images/connectSticker.png";
+import chatIcon from "../../assets/icons/chat.png";
+import viewProfileIcon from "../../assets/icons/view-profile.png";
 import "./friends.css";
 import { searchProfiles } from "../../services/profiles";
+import { getMyFriends } from "../../services/friends";
 
 const FriendsListing = () => {
-  const [friends, setFriends] = useState([
-    {
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNt6-6B_ZhqBgGp2OQWeCSzUcq3xyHcvTvwqI6zohzsw&s",
-      firstName: "saeed",
-      lastName: "haider",
-      nickName: "saeed",
-      age: "37.65555",
-      height: {
-        feet: 5,
-        inches: 4,
-      },
-      tongue: "urdu",
-      address: "lahore",
-      religion: "islam",
-      cast: "daal",
-      education: "BS",
-      _id: "123",
-    },
-  ]);
   const navigate = useNavigate();
 
+  const [friends, setFriends] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const fetchFriends = async (page = 1) => {
+    setLoading(true);
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await getMyFriends(userId);
+
+      console.log("response============frieds", response);
+      // if (!response?.data?.data?.profiles?.length) {
+      //   toast.info("No matching records found, try different filters");
+      // } else {
+      //   const { profiles, totalPages, currentPage } = response.data.data;
+      //   setProfiles(profiles);
+      //   setPageCount(totalPages);
+      //   setCurrentPage(currentPage - 1);
+      //   toast.success("Profiles fetched successfully!");
+      //   // Update the current page in local storage
+      //   data.page = currentPage;
+      //   localStorage.setItem("filters", JSON.stringify(data));
+      // }
+    } catch (error) {
+      toast.error("Something went wrong, please try again!");
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleClick = (profileId) => {
     navigate(`/profile/${profileId}`);
   };
@@ -40,6 +52,12 @@ const FriendsListing = () => {
     return `${years} yrs, ${months} months`;
   };
 
+  const openProfileDetails = (profileId) => {
+    navigate(`/profile/${profileId}`);
+  };
+  const openChatWindow = () => {
+    navigate("/chat");
+  };
   return (
     <>
       <div className="connection-main-con">
@@ -84,8 +102,20 @@ const FriendsListing = () => {
                     </div>
                   </div>
                   <div className="connection-status-con">
-                    <p onClick={() => handleClick(friend._id)}>Chat</p>
-                    <img src={connectSticker} alt="" />
+                    <img
+                      className="chat-icon"
+                      onClick={openChatWindow}
+                      src={chatIcon}
+                      alt=""
+                    />
+                  </div>
+                  <div className="connection-status-con">
+                    <img
+                      className="chat-icon"
+                      onClick={() => openProfileDetails(friend._id)}
+                      src={viewProfileIcon}
+                      alt=""
+                    />
                   </div>
                 </div>
               );
@@ -131,8 +161,20 @@ const FriendsListing = () => {
                     </div>
                   </div>
                   <div className="connection-status-con">
-                    <p onClick={() => handleClick(friend._id)}>Chat</p>
-                    <img src={connectSticker} alt="" />
+                    <img
+                      className="chat-icon"
+                      onClick={openChatWindow}
+                      src={chatIcon}
+                      alt=""
+                    />
+                  </div>
+                  <div className="connection-status-con">
+                    <img
+                      className="chat-icon"
+                      onClick={() => openProfileDetails(friend._id)}
+                      src={viewProfileIcon}
+                      alt=""
+                    />
                   </div>
                 </div>
               );
