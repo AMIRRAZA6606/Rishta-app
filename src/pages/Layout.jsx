@@ -3,10 +3,10 @@ import Header from "../pages/Header"
 import Footer from "../pages/Footer"
 import "./Layout.css"
 
-const Layout = ({ children, isHeader, isFooter }) => {
+const Layout = ({ children, isHeader, isFooter, bgColor }) => {
     return (
         <>
-            {isHeader && <Header />}
+          {isHeader && <Header bgColor={bgColor} />}
             {children}
             {isFooter && <Footer />}
         </>

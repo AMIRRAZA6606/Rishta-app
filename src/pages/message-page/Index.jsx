@@ -5,7 +5,7 @@ import './message.css'
 
 const Index = () => {
     return (
-        <Layout isHeader={true} isFooter={false}>
+        <Layout isHeader={true} isFooter={false} bgColor={"#e5efef"}>
             <Message />
         </Layout>
     )

@@ -3,6 +3,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 .header-main-con{
     /* background-color: aquamarine; */
     padding-inline: 141px;
@@ -24,6 +26,7 @@
     margin-top: 20px;
     font-weight: 400;
     gap: 31px;
+    height: 30px;
 }
 .header-main-con .navigation-bar a{
         color: #752020;
@@ -119,4 +122,183 @@ font-size: 20px;
     color: white;
 font-size: 20px;
 
+}
+
+.trust-by-million-con{
+     font-family: "Playfair Display",sans-serif  !important;
+    background-color: #e5efef;
+      margin-top: 62px;
+      padding-left: 142px;
+      display: flex;
+          gap: 75px;
+
+}
+
+.trust-by-million-con .heading{
+    background: #9A2143;
+    color: white;
+    font-size: 36px;
+    padding: 20px 52px;
+    border-radius: 20px;
+    height: 99px;
+    width: 22%;
+}
+.trust-by-million-con .facility-con{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+.best-match{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+padding-block: 30px;
+}
+.best-match span{
+    font-size: 32px;
+    color: #757171;
+}
+.best-match img{
+width: 123px;
+}
+
+.header-main-con .header-connection-con{
+position: relative;
+
+}
+.header-connection-con span{
+    position: absolute;
+    width: 8px;
+    height: 8px ;
+    cursor: pointer;
+right:-15px;
+top: -3px;
+}
+.header-connection-con span img{
+    width: 100%;
+}
+
+.header-notification-con{
+    position: relative;
+    display: flex;
+    gap: 5px;
+
+}
+.header-notification-con span{
+    width: 14px;
+    height: 19px;
+    cursor: pointer;
+    padding-top: 2px;
+}
+
+.header-notification-con span img{
+    width: 100%;
+}
+
+.header-connection-con .connection-dropdown-con{
+    position: absolute; 
+    top:30px ;
+    background: white;
+    visibility: hidden;
+}
+.connection-dropdown-con ul{
+    padding-block: 10px;
+
+}
+.connection-dropdown-con ul li{
+    display: flex;
+    align-items: center;
+    padding-inline: 7px;
+    gap: 2px;
+    text-decoration: none;
+    background: #d9d9d9;
+    margin-bottom: 5px;
+    padding-right: 20px;
+cursor: pointer;
+}
+
+.connection-dropdown-con ul li:hover{
+    background: #9A2143;
+    color: white;
+}
+.header-connection-con:hover .connection-dropdown-con{
+    visibility: visible;
+
+}
+
+.header-notif-dropdown{
+    position: absolute;
+    left: -20px;
+    top: 30px;
+    padding: 18px;
+    background: #ca3c5e;
+    border-radius: 12px;
+    /* width: 200px; */
+    display: flex;
+    gap: 14px;
+    visibility: hidden;
+}
+
+.header-notif-dropdown img{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.header-notif-dropdown .notif-content-con{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 2px;
+    font-family: "Poppins", sans-serif;
+
+
+}
+
+.notif-content-con .name{
+font-weight: bold;
+
+}
+.notif-content-con .time , .info{
+    font-size: 10px;
+    font-weight: 300 !important;
+
+}
+
+.notif-content-con .accept-btn-con{
+display:  flex;
+padding-top: 10px;
+gap: 8px;
+}
+
+.notif-content-con .accept-btn-con .accept-btn{
+    background: #e23744;
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    padding: 4px 14px;
+    cursor: pointer;
+font-size: 12px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+
+
+}
+.notif-content-con .accept-btn-con .reject-btn{
+    background: #eeeeee;
+    color: #878787;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 14px;
+    cursor: pointer;
+font-size: 12px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.header-notification-con:hover .header-notif-dropdown{
+    visibility: visible;
 }
