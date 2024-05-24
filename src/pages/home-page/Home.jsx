@@ -67,8 +67,8 @@ const endAgeOpts = [
 
 const religionOpts = [
   { value: "", label: "Select" },
-  { value: "hinduism", label: "Hinduism" },
   { value: "islam", label: "Islam" },
+  { value: "hinduism", label: "Hinduism" },
   { value: "christianity", label: "Christianity" },
   { value: "sikhism", label: "Sikhism" },
   { value: "jainism", label: "Jainism" },
@@ -180,7 +180,15 @@ const Home = () => {
         if (!response?.data?.data?.length) {
           toast.info("No matching records found, try different filters");
         } else {
-          navigate("/profiles", { state: { profiles: response?.data?.data } });
+          // Filter out profiles that user does not se his own profile
+          const profiles = response?.data?.data;
+          navigate("/profiles", {
+            state: {
+              profiles: profiles.filter(
+                (profile) => profile._id !== localStorage.getItem("userId")
+              ),
+            },
+          });
         }
       } catch (error) {
         toast.error(error?.response?.data?.message);
