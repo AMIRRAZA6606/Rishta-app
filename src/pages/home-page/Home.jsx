@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import homeImg from "../../assets/images/homeImg.png";
@@ -158,6 +158,10 @@ const Home = () => {
     return newErrors;
   };
 
+  useEffect(() => {
+    localStorage.removeItem("filters");
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
@@ -175,21 +179,12 @@ const Home = () => {
           cast: selectedCast,
           sect: selectedSect,
           height: selectedHeight,
+          page: 1,
+          pageSize: 1,
         };
-        const response = await searchProfiles(data);
-        if (!response?.data?.data?.length) {
-          toast.info("No matching records found, try different filters");
-        } else {
-          // Filter out profiles that user does not se his own profile
-          const profiles = response?.data?.data;
-          navigate("/profiles", {
-            state: {
-              profiles: profiles.filter(
-                (profile) => profile._id !== localStorage.getItem("userId")
-              ),
-            },
-          });
-        }
+
+        localStorage.setItem("filters", JSON.stringify(data));
+        navigate("/profiles");
       } catch (error) {
         toast.error(error?.response?.data?.message);
       }
