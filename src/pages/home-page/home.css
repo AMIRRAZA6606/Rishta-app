@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .home-main-con {
   position: relative;
@@ -18,6 +18,7 @@
 }
 .home-main-con .heading-con {
   font-size: 96px;
+  
   /* max-width: 976px; */
 }
 .heading-con .child-1 {
@@ -100,6 +101,7 @@
   color: #9a2143;
   padding-bottom: 12px;
   padding-left: 22px;
+
 }
 
 .select-con-1 .religion-select {
@@ -115,7 +117,8 @@
   color: #757171;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-family: "Playfair Display", sans-serif !important;
-}
+
+  }
 .select-con-1 .living-select {
   font-weight: 600;
   width: 402px;
