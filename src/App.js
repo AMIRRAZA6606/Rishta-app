@@ -9,7 +9,7 @@ import Profiles from "./pages/profiles-page/Index";
 import Friends from "./pages/friends-page/Index";
 import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
-// import ContactUs from "./pages/contact-us-page/Index"
+import ContactUs from "./pages/contact-us-page/Index"
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/profile/:profileId" element={<Profile />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/friends" element={<Friends />} />
-          {/* <Route path="/contact-us" element={<ContactUs />} /> */}
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </AuthProvider>
     </>
