@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+.contact-us-main-con{
+     font-family: "Poppins", sans-serif !important;
+  font-style: normal !important;
+  background: #fafafa;
+  padding-left: 122px;
+  padding-right: 158px;
+  padding-bottom: 200px;
+}
+
+.contact-us-heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 18px;
+}
+
+.contact-us-heading h1{
+    color: #9A2143;
+    font-size: 40px;
+    font-weight: 600;
+    
+
+}
+.contact-us-main-con .contact-us-form-con{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    padding: 10px;
+}
+.form-heading .heading-text{
+    font-size: 18px;
+    color: #C9C9C9;
+}
+
+.contact-us-form-con .form-info{
+    width: 40%;
+    background:#9a2143 ;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+}
+.side-details{
+    display:  flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 110px;
+    padding-bottom: 250px;
+}
+.side-details .info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+}
+
+.side-details .info span{
+    width: 24px;
+    height: 24px;
+}
+
+.form-shape{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+}
+.form-shape img{
+    width: 100%;
+}
+
+.form-con{
+    padding-left: 200px;
+    padding-right: 121px;
+    width: 100%;
+
+}
+.contact-us-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 45px;
+}
+.contact-us-form .input-con-1{
+display: flex;
+gap: 150px;
+
+width: 100%;
+}
+.contact-us-form .input-con-2{
+display: flex;
+gap: 150px;
+width: 100%;
+}
+.contact-us-form .message{
+    width: 100%;
+}
+
+.input-con-1 .firstName{
+    width: 50%;
+    
+}
+.firstName input{
+    
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #8D8D8D;
+}
+.input-con-1 .lastName{
+    width: 50%;
+}
+
+.lastName input{
+    width: 100%;
+     border: none;
+    border-bottom: 1px solid #8D8D8D;
+}
+
+.input-con-2 .email{
+    width: 50%;
+}
+
+.email input{
+    width: 100%;
+     border: none;
+    border-bottom: 1px solid #8D8D8D;
+}
+.input-con-2 .phoneNumber{
+    width: 50%;
+}
+.phoneNumber input{
+    width: 100%;
+     border: none;
+    border-bottom: 1px solid #8D8D8D;
+}
+
+.message textarea{
+    width: 100%;
+     border: none;
+    border-bottom: 1px solid #8D8D8D;
+resize: none;
+padding-block: 10px;
+ font-family: "Poppins", sans-serif !important;
+}
+
+.contact-us-main-con .contact-us-input-label{
+    color: #8D8D8D;
+    font-size: 12px;
+
+}
+input{
+    font-size: 14px;
+    padding-block: 10px;
+}
+input:focus{
+
+    outline: none;
+}
+textarea:focus{
+
+    outline: none;
+}
+
+.contact-us-submit-btn{
+    background: #9a2143;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    padding: 15px 48px;
+    border: none;
+    border-radius: 5px;
+align-self: flex-end;
+cursor: pointer;
+}
