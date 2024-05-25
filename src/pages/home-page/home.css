@@ -72,6 +72,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+
 .select-con .age-select {
   font-weight: 600;
   width: 219px;
@@ -86,6 +87,7 @@
   font-family: "Playfair Display", sans-serif !important;
   font-optical-sizing: auto;
   margin-top: 12px;
+  
 }
 
 .select-con-1 {

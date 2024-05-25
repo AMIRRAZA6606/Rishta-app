@@ -22,6 +22,7 @@ const CommonSelect = (props) => {
           handleChange(e.target.value);
         }}
       >
+
         {options?.map((opt, index) => {
           return (
             <option key={index} value={opt?.value}>
@@ -29,6 +30,7 @@ const CommonSelect = (props) => {
             </option>
           );
         })}
+
       </select>
       <img src={inputIcon} alt="" style={iconStyle} />
     </div>
