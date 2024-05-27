@@ -9,6 +9,7 @@ import Profiles from "./pages/profiles-page/Index";
 import Friends from "./pages/friends-page/Index";
 import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
+import RequestsListing from "./pages/requests-page/Requests";
 // import ContactUs from "./pages/contact-us-page/Index"
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path="/profile/:profileId" element={<Profile />} />
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/friends" element={<Friends />} />
+          <Route path="/requests" element={<RequestsListing />} />
+
           {/* <Route path="/contact-us" element={<ContactUs />} /> */}
         </Routes>
       </AuthProvider>

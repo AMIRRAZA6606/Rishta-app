@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import profileIcon from "../assets/icons/profileIcon.png";
 import downArrowIcon from "../assets/icons/downArrowIcon.png";
 import notificationIcon from "../assets/icons/notificationIcon.png";
-import { useAuth } from "../context/AuthContext";
+import { AuthProvider, useAuth } from "../context/AuthContext";
 import { IMAGE_BASE_URL } from "../config/systemConfigs";
 import { acceptRequest } from "../services/request";
 
@@ -14,6 +14,8 @@ const Header = ({ bgColor }) => {
 
   console.log("noti-----------", requests);
   console.log("length-----------", requests.length);
+
+
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("userId");
@@ -72,6 +74,7 @@ const Header = ({ bgColor }) => {
 
           <NavLink to={"/contact-us"}>Contact Us</NavLink>
           <NavLink to={"/profile"}>Profile</NavLink>
+          <NavLink to={"/requests"}>Requests</NavLink>
           <div className="header-notification-con">
             <NavLink>Notifications</NavLink>
             <span>
