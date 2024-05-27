@@ -180,7 +180,7 @@ const Home = () => {
           sect: selectedSect,
           height: selectedHeight,
           page: 1,
-          pageSize: 1,
+          pageSize: 7,
         };
 
         localStorage.setItem("filters", JSON.stringify(data));

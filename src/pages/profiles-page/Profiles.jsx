@@ -6,6 +6,7 @@ import { Oval } from "react-loader-spinner";
 import connectSticker from "../../assets/images/connectSticker.png";
 import "./paginate.css";
 import { searchProfiles } from "../../services/profiles";
+import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 
 const ProfilesListing = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const ProfilesListing = () => {
     setLoading(true);
     let data = JSON.parse(localStorage.getItem("filters")) || {};
     data.page = page;
-    data.pageSize = 1; // Set the page size here or retrieve from local storage if needed
+    data.pageSize = 7; // Set the page size here or retrieve from local storage if needed
 
     try {
       const response = await searchProfiles(data);
@@ -89,7 +90,7 @@ const ProfilesListing = () => {
             {profiles?.map((profile, index) => (
               <div key={index} className="connection-con">
                 <div className="connection-img">
-                  <img src={profile.image} alt="" />
+                  <img src={`${IMAGE_BASE_URL}/${profile.image}`} alt="" />
                 </div>
                 <div className="connection-info">
                   <p>Name: {`${profile?.firstName} ${profile?.lastName}`}</p>
@@ -101,8 +102,8 @@ const ProfilesListing = () => {
                   <div className="border-1"></div>
                   <div className="desc-con-wrapper">
                     <div className="info-con">
+                      <p>{convertAgeToYearsAndMonths(profile.age)}, </p>
                       <p>
-                        {convertAgeToYearsAndMonths(profile.age)},{" "}
                         {`${profile.height.feet} feet, ${profile.height.inches} inches`}
                       </p>
                       {/* <p>{connection.marriedStatus}</p> */}

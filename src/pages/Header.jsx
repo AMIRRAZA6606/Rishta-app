@@ -1,16 +1,41 @@
 import React from "react";
 import rishtaLogo from "../assets/images/rishtaLogo.png";
 import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import profileIcon from "../assets/icons/profileIcon.png";
 import downArrowIcon from "../assets/icons/downArrowIcon.png";
 import notificationIcon from "../assets/icons/notificationIcon.png";
-import notifImg from "../assets/images/notifImg.png";
+import { useAuth } from "../context/AuthContext";
+import { IMAGE_BASE_URL } from "../config/systemConfigs";
+import { acceptRequest } from "../services/request";
+
 const Header = ({ bgColor }) => {
+  const { notifications: requests } = useAuth();
+
+  console.log("noti-----------", requests);
+  console.log("length-----------", requests.length);
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("userId");
     window.dispatchEvent(new Event("storage"));
     window.location.href = "/";
+  };
+
+  const acceptFriendRequest = async (requestId) => {
+    try {
+      const data = {
+        requestId,
+        status: "accepted",
+      };
+      await acceptRequest(data);
+
+      toast.success("Friend request accepted successfully");
+    } catch (error) {
+      toast.error("Something went wrong, please try again later");
+    }
+  };
+  const rejectFriendRequest = (requestId) => {
+    alert(requestId);
   };
 
   return (
@@ -48,23 +73,41 @@ const Header = ({ bgColor }) => {
           <NavLink to={"/contact-us"}>Contact Us</NavLink>
           <NavLink to={"/profile"}>Profile</NavLink>
           <div className="header-notification-con">
-            <NavLink to={"/contact-us"}>Notification</NavLink>
+            <NavLink>Notifications</NavLink>
             <span>
               <img src={notificationIcon} alt="" />
             </span>
             <div className="header-notif-dropdown">
-              <img src={notifImg} alt="" />
-              <div className="notif-content-con">
-                <p className="name">Jenny Wilson</p>
-                <p className="time">1min ago</p>
-                <p className="info">
-                  Guy Hawkins, Robert Fox and 3 other mutual friend
-                </p>
-                <div className="accept-btn-con">
-                  <button className="accept-btn">Accept</button>
-                  <button className="reject-btn">Reject</button>
-                </div>
-              </div>
+              {requests.length > 0 ? (
+                requests.map((request, index) => (
+                  <div key={index} className="notif-item">
+                    <img
+                      className="image-con"
+                      src={`${IMAGE_BASE_URL}/${request?.from?.image}`}
+                      alt=""
+                    />
+                    <div className="notif-content-con">
+                      <p className="name">{`${request?.from?.firstName} ${request?.from?.lastName} sent you a friend request`}</p>
+                      <div className="accept-btn-con">
+                        <button
+                          className="accept-btn"
+                          onClick={() => acceptFriendRequest(request.id)}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="reject-btn"
+                          onClick={() => rejectFriendRequest(request.id)}
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>No notifications</p>
+              )}
             </div>
           </div>
           <NavLink>
@@ -76,6 +119,7 @@ const Header = ({ bgColor }) => {
             />
           </NavLink>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

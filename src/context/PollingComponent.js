@@ -3,7 +3,7 @@ import { useAuth } from "./AuthContext";
 import { getMyReceivedFriendRequests } from "../services/polling";
 
 const PollingComponent = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, setNotifications } = useAuth();
   const pollingRef = useRef(null);
 
   useEffect(() => {
@@ -22,10 +22,12 @@ const PollingComponent = () => {
         const userId = localStorage.getItem("userId");
         const response = await getMyReceivedFriendRequests(userId);
         console.log("Polling data:", response);
+        console.log("Polling data:", response);
+        setNotifications(response?.data?.data);
       } catch (error) {
         console.error("Polling error:", error);
       }
-    }, 5000); // Adjust the interval as necessary
+    }, 2000); // Adjust the interval as necessary
   };
 
   const stopPolling = () => {
