@@ -12,10 +12,6 @@ import { acceptRequest } from "../services/request";
 const Header = ({ bgColor }) => {
   const { notifications: requests } = useAuth();
 
-  console.log("noti-----------", requests);
-  console.log("length-----------", requests.length);
-
-
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("userId");
@@ -73,12 +69,13 @@ const Header = ({ bgColor }) => {
           </div>
 
           <NavLink to={"/contact-us"}>Contact Us</NavLink>
-          <NavLink to={"/profile"}>Profile</NavLink>
           <NavLink to={"/requests"}>Requests</NavLink>
+
+          <NavLink to={"/profile"}>Profile</NavLink>
           <div className="header-notification-con">
             <NavLink>Notifications</NavLink>
             <span>
-              <img src={notificationIcon} alt="" />
+              <img src={requests.length ?? notificationIcon} alt="" />
             </span>
             <div className="header-notif-dropdown">
               {requests.length > 0 ? (

@@ -21,8 +21,6 @@ const PollingComponent = () => {
       try {
         const userId = localStorage.getItem("userId");
         const response = await getMyReceivedFriendRequests(userId);
-        console.log("Polling data:", response);
-        console.log("Polling data:", response);
         setNotifications(response?.data?.data);
       } catch (error) {
         console.error("Polling error:", error);
