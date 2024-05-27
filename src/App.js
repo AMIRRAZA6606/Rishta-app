@@ -11,6 +11,7 @@ import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
 import RequestsListing from "./pages/requests-page/Requests";
 import Message from "./pages/message-page/Chat";
+import { useEffect } from "react";
 // import ContactUs from "./pages/contact-us-page/Index"
 
 function App() {

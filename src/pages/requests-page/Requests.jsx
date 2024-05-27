@@ -127,6 +127,7 @@ const RequestsListing = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
       <div className="pagination">
         <ReactPaginate
           breakLabel="..."
@@ -148,7 +149,6 @@ const RequestsListing = () => {
           activeClassName="active"
         />
       </div>
-      <ToastContainer />
     </>
   );
 };

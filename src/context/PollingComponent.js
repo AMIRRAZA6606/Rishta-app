@@ -25,7 +25,7 @@ const PollingComponent = () => {
       } catch (error) {
         console.error("Polling error:", error);
       }
-    }, 2000); // Adjust the interval as necessary
+    }, 3000); // Adjust the interval as necessary
   };
 
   const stopPolling = () => {

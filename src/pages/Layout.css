@@ -149,17 +149,6 @@
 .header-main-con .header-connection-con {
   position: relative;
 }
-.header-connection-con span {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  cursor: pointer;
-  right: -15px;
-  top: -3px;
-}
-.header-connection-con span img {
-  width: 100%;
-}
 
 .header-notification-con {
   position: relative;

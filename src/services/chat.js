@@ -9,9 +9,9 @@ export const sendMessage = async (data) => {
   return response;
 };
 
-export const getMessages = async (userId) => {
+export const getMessages = async (from, to) => {
   const response = await axiosInstance.get(
-    `${BASE_URL}/chat/getMessages/${userId}`
+    `${BASE_URL}/chat/getMessages/${from}/${to}`
   );
   return response;
 };

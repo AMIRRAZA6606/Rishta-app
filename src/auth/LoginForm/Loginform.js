@@ -52,6 +52,7 @@ export const Loginform = () => {
 
       // store token in local storage
       localStorage.setItem("userId", response?.data?.data?.userId);
+      localStorage.setItem("email", response?.data?.data?.email);
       localStorage.setItem("jwtToken", response?.data?.data?.token);
       window.dispatchEvent(new Event("storage"));
       navigate("/home");
