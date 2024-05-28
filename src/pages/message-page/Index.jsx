@@ -1,14 +1,14 @@
-import React from 'react'
-import Layout from '../Layout'
-import Message from './Message'
-import './message.css'
+import React from "react";
+import Layout from "../Layout";
+import Chat from "./Chat";
+import "./chat.css";
 
 const Index = () => {
-    return (
-        <Layout isHeader={true} isFooter={false} bgColor={"#e5efef"}>
-            <Message />
-        </Layout>
-    )
-}
+  return (
+    <Layout isHeader={true} isFooter={false} bgColor={"#e5efef"}>
+      <Chat />
+    </Layout>
+  );
+};
 
-export default Index
+export default Index;

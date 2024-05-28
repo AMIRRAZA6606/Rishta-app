@@ -6,6 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("jwtToken")
   );
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -18,7 +19,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, notifications, setNotifications }}
+    >
       {children}
     </AuthContext.Provider>
   );

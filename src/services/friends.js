@@ -1,9 +1,9 @@
 import { BASE_URL } from "../config/systemConfigs";
 import axiosInstance from "../config/axiosInstance";
 
-export const getMyReceivedFriendRequests = async (userId) => {
+export const getMyFriends = async (userId, page, pageSize) => {
   const response = await axiosInstance.get(
-    `${BASE_URL}/friend-request/received/${userId}`
+    `${BASE_URL}/friends/all/${userId}?page=${page}&pageSize=${pageSize}`
   );
   return response;
 };
