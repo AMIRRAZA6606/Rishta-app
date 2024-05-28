@@ -218,6 +218,8 @@ const Message = () => {
                 value={message}
                 placeholder="Type your message here..."
                 onChange={handleMessageChange}
+                autoFocus
+
               />
               <button onClick={handleSendMessage} className="send-message-btn">
                 Send message
