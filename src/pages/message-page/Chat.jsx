@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { getMyFriends } from "../../services/friends";
 import { getMessages, sendMessage } from "../../services/chat";
 import { IMAGE_BASE_URL } from "../../config/systemConfigs";
-
+import './chat.css'
 const Message = () => {
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("userId")
