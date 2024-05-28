@@ -319,6 +319,9 @@ height: calc(100vh - 380px);
 .contact-list-con{
   width: 30%;
 }
+.chat .chat-message .message p{
+  max-width: 300px;
+}
 }
 
 
@@ -335,4 +338,5 @@ height: calc(100vh - 350px);
 
 
 }
+
 }
