@@ -3,7 +3,6 @@ import "./App.css";
 import { Loginform } from "./auth/LoginForm/Loginform";
 import Profile from "./pages/profile-page/Index";
 import Home from "./pages/home-page/Index";
-import Chat from "./pages/message-page/Index";
 import About from "./pages/about-page/Index";
 import Profiles from "./pages/profiles-page/Index";
 import Friends from "./pages/friends-page/Index";
@@ -11,8 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
 import RequestsListing from "./pages/requests-page/Requests";
 import Message from "./pages/message-page/Chat";
-import { useEffect } from "react";
-// import ContactUs from "./pages/contact-us-page/Index"
+import ContactUs from "./pages/contact-us-page/Index";
 
 function App() {
   return (
@@ -29,8 +27,7 @@ function App() {
           <Route path="/profiles" element={<Profiles />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/requests" element={<RequestsListing />} />
-
-          {/* <Route path="/contact-us" element={<ContactUs />} /> */}
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </AuthProvider>
     </>

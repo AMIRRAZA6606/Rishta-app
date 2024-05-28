@@ -4,10 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import homeImg from "../../assets/images/homeImg.png";
 import "./home.css";
 import CommonSelect from "../../components/CommonSelect";
-import bestMatches from "../../assets/images/best-matches.png";
-import privacy from "../../assets/images/privacy.png";
-import verifiedProfile from "../../assets/images/verified-profile.png";
-import { searchProfiles } from "../../services/profiles";
+
 
 const genderOpts = [
   { value: "", label: "Select" },
@@ -301,23 +298,7 @@ const Home = () => {
             Let's Begin
           </button>
         </form>
-        <div className="trust-by-million-con">
-          <div className="heading">Trust By Millions</div>
-          <div className="facility-con">
-            <div className="best-match">
-              <img src={bestMatches} alt="" />
-              <span>Best Matches</span>
-            </div>
-            <div className="best-match">
-              <img src={verifiedProfile} alt="" />
-              <span>Verified Profile</span>
-            </div>
-            <div className="best-match">
-              <img src={privacy} alt="" />
-              <span>100% Privacy</span>
-            </div>
-          </div>
-        </div>
+
         <ToastContainer />
       </div>
     </div>

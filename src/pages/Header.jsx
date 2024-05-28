@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import rishtaLogo from "../assets/images/rishtaLogo.png";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,12 +10,32 @@ import { IMAGE_BASE_URL } from "../config/systemConfigs";
 import { acceptRequest } from "../services/request";
 
 const Header = ({ bgColor }) => {
+
+  const [logoutPopover, setLogoutPopover] = useState(false)
+
+  const popoverRef = useRef()
+
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("userId");
     window.dispatchEvent(new Event("storage"));
     window.location.href = "/";
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        setLogoutPopover(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
 
   return (
     <div className="header-main-con" style={{ background: bgColor }}>
@@ -67,14 +87,28 @@ const Header = ({ bgColor }) => {
               )}
             </div> */}
           </div>
-          <NavLink>
+          <div className="profile-icon-con">
+
             <img
               src={profileIcon}
               alt=""
-              onClick={logout}
+              onClick={(e) => {
+                e.stopPropagation()
+                setLogoutPopover(!logoutPopover)
+              }}
               className="profile-icon"
             />
-          </NavLink>
+            {logoutPopover &&
+              <div className="logout-popover"
+                onClick={logout}
+                ref={popoverRef}
+              >
+                <p>Logout</p>
+              </div>
+            }
+
+          </div>
+
         </div>
         <ToastContainer />
       </div>
