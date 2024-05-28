@@ -9,7 +9,7 @@ import Friends from "./pages/friends-page/Index";
 import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
 import RequestsListing from "./pages/requests-page/Requests";
-import Message from "./pages/message-page/Chat";
+import Chat from './pages/message-page/IndexChat'
 import ContactUs from "./pages/contact-us-page/Index";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Loginform />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/chat" element={<Message />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile/:profileId" element={<Profile />} />
           <Route path="/profiles" element={<Profiles />} />
