@@ -137,31 +137,224 @@ const Message = () => {
         </div>
 
         <h2>Friends</h2>
-        {filteredFriends.map((obj) => (
-          <div
-            key={obj._id}
-            className="user-con"
-            onClick={() => handleFriendClick(obj._id)}
-          >
-            <div className="user-img">
-              <img
-                className="chat-image"
-                src={`${IMAGE_BASE_URL}/${obj.image}`}
-                alt=""
-              />
-            </div>
-            <div className="user-details-con">
-              <div className="user-name-div">
-                <div className="name">
-                  {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                  <p>{`${obj.firstName} ${obj.lastName}`}</p>
+        <div className="friends-list-con">
+
+          {filteredFriends.map((obj) => (
+            <>
+
+
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
                 </div>
-                <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>        <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
               </div>
-            </div>
-            <hr />
-          </div>
-        ))}
+
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+              <div
+                key={obj._id}
+                className="user-con"
+                onClick={() => handleFriendClick(obj._id)}
+              >
+                <div className="user-img">
+                  <img
+                    className="chat-image"
+                    src={`${IMAGE_BASE_URL}/${obj.image}`}
+                    alt=""
+                  />
+                </div>
+                <div className="user-details-con">
+                  <div className="user-name-div">
+                    <div className="name">
+                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                    </div>
+                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </>
+
+          ))}
+        </div>
+
       </div>
       {selectedFriend ? (
         <div className="chat-section">

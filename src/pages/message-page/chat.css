@@ -24,9 +24,14 @@
   flex-direction: column;
   gap: 25px;
   cursor: pointer;
-  width: 20%;
-  max-height: 645px;
+  width: 25%;
+}
+
+.contact-list-con .friends-list-con{
+  max-height: 480px;
   overflow-y: auto;
+
+
 }
 .contact-list-con span {
   font-size: 23px;
@@ -122,7 +127,7 @@
 }
 
 .message-main-con .chat-section {
-  width: 80%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -210,7 +215,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-height: 445px;
+height: calc(100vh - 465px);
   overflow: auto;
 }
 
@@ -277,4 +282,57 @@ height: 445px;
 .chat-message .message .message-time img {
   width: 14px;
   height: 10px;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 1600px) {
+  .contact-list-con {
+padding-left: 10px;
+padding-right: 0;
+  }
+  .user-con{
+    padding-right: 10px !important;
+  }
+}
+
+
+@media (max-width: 1110px) {
+
+.chat-con .chat{
+height: calc(100vh - 380px);
+
+
+}
+}
+
+@media (max-width: 1028px) {
+.message-main-con{
+  padding-right: 10px;
+;
+}
+.message-main-con .chat-section{
+  width: 70%;
+}
+
+.contact-list-con{
+  width: 30%;
+}
+}
+
+
+@media (max-width: 870px) {
+.message-main-con .chat-section{
+  width: 65%;
+}
+
+.contact-list-con{
+  width: 35%;
+}
+.chat-con .chat{
+height: calc(100vh - 350px);
+
+
+}
 }

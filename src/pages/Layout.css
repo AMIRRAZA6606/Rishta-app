@@ -290,3 +290,30 @@
 .header-notification-con:hover .header-notif-dropdown {
   visibility: visible;
 }
+
+
+
+@media (max-width: 1370px) {
+.header-main-con{
+  padding-inline: 10px;
+}
+}
+
+
+@media (max-width: 1110px) {
+.header-main-con img{
+  width: 250px;
+}
+.header-main-con .navigation-bar{
+gap: 20px;
+}
+}
+
+@media (max-width: 870px) {
+.header-main-con img{
+  width: 200px;
+}
+.header-main-con .navigation-bar{
+gap: 15px;
+}
+}

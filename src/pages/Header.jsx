@@ -1,13 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import rishtaLogo from "../assets/images/rishtaLogo.png";
 import { NavLink } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import profileIcon from "../assets/icons/profileIcon.png";
-import downArrowIcon from "../assets/icons/downArrowIcon.png";
-import notificationIcon from "../assets/icons/notificationIcon.png";
-import { AuthProvider, useAuth } from "../context/AuthContext";
-import { IMAGE_BASE_URL } from "../config/systemConfigs";
-import { acceptRequest } from "../services/request";
+import rishtaLogo from "../assets/images/rishtaLogo.png";
 
 const Header = ({ bgColor }) => {
 
