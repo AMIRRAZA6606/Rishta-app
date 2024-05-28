@@ -184,3 +184,59 @@ textarea:focus{
 align-self: flex-end;
 cursor: pointer;
 }
+
+
+@media (max-width: 1320px) {
+.contact-us-main-con{
+    
+    padding-left: 50px;
+    padding-right: 50px;
+}
+    .form-con{
+
+    padding-left: 100px;
+    padding-right: 100px;
+}
+}
+
+
+@media (max-width: 1120px) {
+.contact-us-main-con{
+    
+    padding-left: 20px;
+    padding-right: 20px;
+}
+    .form-con{
+
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.contact-us-form .input-con-1{
+    gap: 100px;
+}
+    .contact-us-form .input-con-2{
+    gap: 100px;
+}
+}
+
+@media (max-width: 770px) {
+.contact-us-main-con{
+    
+    padding-left: 20px;
+    padding-right: 20px;
+}
+    .form-con{
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.contact-us-form .input-con-1{
+    gap: 50px;
+}
+    .contact-us-form .input-con-2{
+    gap: 50px;
+}
+.contact-us-form-con .form-info{
+    padding: 20px;
+}
+}
