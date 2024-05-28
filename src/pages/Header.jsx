@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import rishtaLogo from "../assets/images/rishtaLogo.png";
 import { NavLink } from "react-router-dom";
 import profileIcon from "../assets/icons/profileIcon.png";
@@ -6,12 +6,32 @@ import downArrowIcon from "../assets/icons/downArrowIcon.png";
 import notificationIcon from "../assets/icons/notificationIcon.png";
 import notifImg from "../assets/images/notifImg.png";
 const Header = ({ bgColor }) => {
+
+  const [logoutPopover, setLogoutPopover] = useState(false)
+
+  const popoverRef = useRef()
+
   const logout = () => {
     localStorage.removeItem("jwtToken");
     localStorage.removeItem("userId");
     window.dispatchEvent(new Event("storage"));
     window.location.href = "/";
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+        setLogoutPopover(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
 
   return (
     <div className="header-main-con" style={{ background: bgColor }}>
@@ -69,14 +89,28 @@ const Header = ({ bgColor }) => {
               </div>
             </div>
           </div>
-          <NavLink>
+          <div className="profile-icon-con">
+
             <img
               src={profileIcon}
               alt=""
-              onClick={logout}
+              onClick={(e) => {
+                e.stopPropagation()
+                setLogoutPopover(!logoutPopover)
+              }}
               className="profile-icon"
             />
-          </NavLink>
+            {logoutPopover &&
+              <div className="logout-popover"
+                onClick={logout}
+                ref={popoverRef}
+              >
+                <p>Logout</p>
+              </div>
+            }
+
+          </div>
+
         </div>
       </div>
     </div>

@@ -13,13 +13,19 @@
     border: 1px solid #F51E92;
     padding: 39px 31px;
     border-radius: 10px;
-  box-shadow: 0.5px 0.5px 3px 0.5px gray
+  box-shadow: 0.5px 0.5px 3px 0.5px gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .banner2-image img{
-    width: 452px;
+    max-width: 452px;
 }
 .banner2-content{
-      width: 473px;;
+      /* width:50%; */
 }
 #span1{
 

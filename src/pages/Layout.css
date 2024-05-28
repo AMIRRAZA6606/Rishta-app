@@ -39,10 +39,28 @@
 }
 
 
-.header-main-con .navigation-bar .profile-icon{
+.header-main-con .navigation-bar .profile-icon-con .profile-icon{
 width: 20px;
 height: 20px;
 cursor: pointer;
+}
+
+.profile-icon-con{
+position: relative;
+
+}
+
+.profile-icon-con .logout-popover{
+    position: absolute;
+    top: 35px;
+    cursor: pointer;
+    border-radius: 7px;
+    right: 0;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
 }
 .footer-main-con{
     background-color: azure;
@@ -217,6 +235,7 @@ top: -3px;
     margin-bottom: 5px;
     padding-right: 20px;
 cursor: pointer;
+width: 100px;
 }
 
 .connection-dropdown-con ul li:hover{
