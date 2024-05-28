@@ -2,7 +2,7 @@
 display: flex;
     background: #e5efef;
 
-    height: calc(100vh - 186px);
+    /* height: calc(100vh - 186px); */
     padding-right: 140px;
     padding-bottom: 24px;
     padding-top: 22px;

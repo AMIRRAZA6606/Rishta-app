@@ -70,6 +70,7 @@ const RequestsListing = () => {
       <div className="connection-main-con">
         <div className="my-friend-class">
           <div className="connection-list-con">
+           
             {notifications.map((notification, index) => (
               <div key={index} className="connection-con">
                 <div className="connection-img">
