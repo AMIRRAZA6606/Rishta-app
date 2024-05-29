@@ -134,7 +134,7 @@
 }
 
 .trust-by-million-con .heading {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: #9a2143;
@@ -166,29 +166,10 @@
 .best-match span {
   font-size: 32px;
   color: #757171;
-
-
 }
-
 
 .header-main-con .header-connection-con {
   position: relative;
-}
-
-.header-notification-con {
-  position: relative;
-  display: flex;
-  gap: 5px;
-}
-.header-notification-con span {
-  width: 14px;
-  height: 19px;
-  cursor: pointer;
-  padding-top: 2px;
-}
-
-.header-notification-con span img {
-  width: 100%;
 }
 
 .header-connection-con .connection-dropdown-con {
@@ -239,6 +220,53 @@
   flex-direction: column;
   gap: 30px;
   visibility: hidden;
+}
+
+.notification-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notification-icon-con {
+  position: relative;
+  margin-left: 5px; /* Adjust to position the icon closer to the text */
+}
+
+.bell-icon {
+  font-size: 14px; /* Adjust size to match quotation marks */
+  cursor: pointer;
+}
+
+.notification-counter {
+  position: absolute;
+  top: -5px; /* Adjust position as needed */
+  right: -10px; /* Adjust position as needed */
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px; /* Adjust size to match the icon */
+}
+
+.profile-icon-con {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon {
+  cursor: pointer;
+}
+
+.logout-popover {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .header-notif-dropdown img {
@@ -295,89 +323,78 @@
   cursor: pointer;
 }
 
-.header-notification-con:hover .header-notif-dropdown {
-  visibility: visible;
-}
-
-
 @media (max-width: 1480px) {
-.trust-by-million-con .heading{
-      font-size: 32px !important;
-}
+  .trust-by-million-con .heading {
+    font-size: 32px !important;
+  }
 }
 
 @media (max-width: 1370px) {
-.header-main-con{
-  padding-inline: 10px;
+  .header-main-con {
+    padding-inline: 10px;
+  }
+  .trust-by-million-con {
+    padding-left: 120px;
+  }
+  .trust-by-million-con .heading {
+    padding: 20px 0px !important;
+    font-size: 22px !important;
+  }
+  .best-match span {
+    font-size: 22px !important;
+  }
 }
-.trust-by-million-con{
-  padding-left: 120px;
-}
-.trust-by-million-con .heading{
-
-      padding: 20px 0px !important;
-      font-size: 22px !important;
-}
-.best-match span{
-  font-size: 22px !important;
-}
-}
-
-
 
 @media (max-width: 1110px) {
-.header-main-con img{
-  width: 250px;
-}
-.header-main-con .navigation-bar{
-gap: 20px;
-}
-.trust-by-million-con{
-  padding-left: 80px;
-}
+  .header-main-con img {
+    width: 250px;
+  }
+  .header-main-con .navigation-bar {
+    gap: 20px;
+  }
+  .trust-by-million-con {
+    padding-left: 80px;
+  }
 }
 
 @media (max-width: 910px) {
-
-.trust-by-million-con{
-  padding-left: 50px;
-}
-.trust-by-million-con .heading{
-
-      padding: 10px 0px !important;
-      font-size: 18px !important;
-      height: 80px !important;
-      border-radius: 12px !important;
-}
-.best-match span{
-  font-size: 18px !important;
-}
-.footer-main-con{
-  padding-inline: 80px;
-}
-.footerlogo img{
-  width: 300px;
-}
-.footer-main-con .footer-details{
-  font-size: 18px;
-}
-.footerpar{
-  font-size: 18px !important;
-}
-.footerpar span{
-  font-size: 18px;
-}
+  .trust-by-million-con {
+    padding-left: 50px;
+  }
+  .trust-by-million-con .heading {
+    padding: 10px 0px !important;
+    font-size: 18px !important;
+    height: 80px !important;
+    border-radius: 12px !important;
+  }
+  .best-match span {
+    font-size: 18px !important;
+  }
+  .footer-main-con {
+    padding-inline: 80px;
+  }
+  .footerlogo img {
+    width: 300px;
+  }
+  .footer-main-con .footer-details {
+    font-size: 18px;
+  }
+  .footerpar {
+    font-size: 18px !important;
+  }
+  .footerpar span {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 870px) {
-.header-main-con img{
-  width: 200px;
+  .header-main-con img {
+    width: 200px;
+  }
+  .header-main-con .navigation-bar {
+    gap: 15px;
+  }
+  .trust-by-million-con {
+    padding-left: 50px;
+  }
 }
-.header-main-con .navigation-bar{
-gap: 15px;
-}
-.trust-by-million-con{
-  padding-left: 50px;
-}
-}
-

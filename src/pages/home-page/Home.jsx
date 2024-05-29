@@ -5,7 +5,6 @@ import homeImg from "../../assets/images/homeImg.png";
 import "./home.css";
 import CommonSelect from "../../components/CommonSelect";
 
-
 const genderOpts = [
   { value: "", label: "Select" },
   { value: "male", label: "Male" },
@@ -95,11 +94,6 @@ const heightOpts = [
   { value: "6'3", label: "6'3" },
   { value: "6'4", label: "6'4" },
   { value: "6'5", label: "6'5" },
-  { value: "6'6", label: "6'6" },
-  { value: "6'7", label: "6'7" },
-  { value: "6'8", label: "6'8" },
-  { value: "6'9", label: "6'9" },
-  { value: "7'0", label: "7'0" },
 ];
 
 const countryOpts = [
@@ -154,10 +148,6 @@ const Home = () => {
     if (!selectedHeight) newErrors.height = "Height is required";
     return newErrors;
   };
-
-  useEffect(() => {
-    localStorage.removeItem("filters");
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -44,11 +44,11 @@
   display: flex;
 }
 .connection-con .connection-img {
-  width: 15%;
+  width: 25%;
 }
 .connection-img img {
   width: 90%;
-  /* height: 100%; */
+  height: 100%;
   object-fit: cover;
 }
 

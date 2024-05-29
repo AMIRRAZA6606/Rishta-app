@@ -27,9 +27,14 @@ const Profile = () => {
   }, [profileId]);
 
   const sendRequest = async (profileId) => {
+    const userId = localStorage.getItem("userId");
+
+    if (profileId === userId) {
+      toast.info("You can not send request to yourself");
+      return;
+    }
     setRequestBtnText("Pending...");
     try {
-      const userId = localStorage.getItem("userId");
       const data = {
         from: userId,
         to: profileId,
@@ -41,7 +46,11 @@ const Profile = () => {
         // "Friend request sent successfully!"
       );
     } catch (err) {
-      toast.error("Something went wrong, try again later");
+      if (err?.response?.status === 400 && profileId === userId) {
+        toast.info("You can not send request to yourself");
+      } else {
+        toast.error("Something went wrong, try again later");
+      }
     }
   };
 
