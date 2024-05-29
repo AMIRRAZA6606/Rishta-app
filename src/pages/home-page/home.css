@@ -258,6 +258,9 @@
   width: 682px;
 
 }
+.home-main-con .main-bg-img {
+  top: -120px;
+}
 }
 
 @media (max-width: 1200px) {
@@ -273,6 +276,9 @@
   max-width: 600px !important;
   font-size: 25px;
     padding: 16px 180px;
+}
+.home-main-con .main-bg-img {
+  top: -100px;
 }
 }
 
@@ -296,6 +302,9 @@
 }
 .sub-con{
   padding-right: 20px;
+}
+.home-main-con .main-bg-img {
+  top: -90px;
 }
 }
 
@@ -325,6 +334,9 @@
 }
 .sub-con{
   padding-right: 20px;
+}
+.home-main-con .main-bg-img {
+  top: -50px;
 }
 }
 
