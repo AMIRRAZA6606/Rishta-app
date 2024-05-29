@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import searchIcon from "../../assets/icons/searchIcon.png";
 import archieveIcon from "../../assets/icons/archieveIcon.png";
 import messageSeenIcon from "../../assets/icons/messageSeenIcon.png";
@@ -8,7 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { getMyFriends } from "../../services/friends";
 import { getMessages, sendMessage } from "../../services/chat";
 import { IMAGE_BASE_URL } from "../../config/systemConfigs";
-import './chat.css'
+import "./chat.css";
+
 const Message = () => {
   const [loggedInUserId, setLoggedInUserId] = useState(
     localStorage.getItem("userId")
@@ -17,10 +18,10 @@ const Message = () => {
   const [searchKey, setSearchKey] = useState("");
   const [friends, setFriends] = useState([]);
   const [filteredFriends, setFilteredFriends] = useState(friends);
-
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [selectedFriend, setSelectedFriend] = useState(null);
+  const chatEndRef = useRef(null);
 
   const fetchAllFriends = async () => {
     try {
@@ -72,7 +73,6 @@ const Message = () => {
   useEffect(() => {
     if (searchKey === "") {
       setFilteredFriends(friends);
-      // setFriends(friends);
     } else {
       const lowerCaseSearchKey = searchKey.toLowerCase();
       const filtered = friends.filter((friend) => {
@@ -80,7 +80,6 @@ const Message = () => {
         return fullName.includes(lowerCaseSearchKey);
       });
       setFilteredFriends(filtered);
-      // setFriends(filtered);
     }
   }, [searchKey, friends]);
 
@@ -123,6 +122,11 @@ const Message = () => {
   const handleSearchChange = (e) => {
     setSearchKey(e.target.value);
   };
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="message-main-con">
       <div className="contact-list-con">
@@ -138,223 +142,32 @@ const Message = () => {
 
         <h2>Friends</h2>
         <div className="friends-list-con">
-
           {filteredFriends.map((obj) => (
-            <>
-
-
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>        <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
+            <div
+              key={obj._id}
+              className="user-con"
+              onClick={() => handleFriendClick(obj._id)}
+            >
+              <div className="user-img">
+                <img
+                  className="chat-image"
+                  src={`${IMAGE_BASE_URL}/${obj.image}`}
+                  alt=""
+                />
               </div>
-
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
+              <div className="user-details-con">
+                <div className="user-name-div">
+                  <div className="name">
+                    {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                    <p>{`${obj.firstName} ${obj.lastName}`}</p>
                   </div>
+                  <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
                 </div>
-                <hr />
               </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-              <div
-                key={obj._id}
-                className="user-con"
-                onClick={() => handleFriendClick(obj._id)}
-              >
-                <div className="user-img">
-                  <img
-                    className="chat-image"
-                    src={`${IMAGE_BASE_URL}/${obj.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="user-details-con">
-                  <div className="user-name-div">
-                    <div className="name">
-                      {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                      <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                    </div>
-                    <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                  </div>
-                </div>
-                <hr />
-              </div>
-            </>
-
+              <hr />
+            </div>
           ))}
         </div>
-
       </div>
       {selectedFriend ? (
         <div className="chat-section">
@@ -403,6 +216,7 @@ const Message = () => {
                   </div>
                 </div>
               ))}
+              <div ref={chatEndRef} />
             </div>
             <div className="message-input-con">
               <input
@@ -412,7 +226,6 @@ const Message = () => {
                 placeholder="Type your message here..."
                 onChange={handleMessageChange}
                 autoFocus
-
               />
               <button onClick={handleSendMessage} className="send-message-btn">
                 Send message
