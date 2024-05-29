@@ -14,7 +14,7 @@
   border-radius: 50%; /* Makes the image round */
   object-fit: cover; /* Ensures the image covers the area and maintains aspect ratio */
   display: inline-block; /* Ensures it behaves like an inline element */
-  height: 65%;
+  /* height: 65%; */
 }
 .contact-list-con {
   padding-left: 40px;
@@ -27,11 +27,9 @@
   width: 25%;
 }
 
-.contact-list-con .friends-list-con{
+.contact-list-con .friends-list-con {
   max-height: 480px;
   overflow-y: auto;
-
-
 }
 .contact-list-con span {
   font-size: 23px;
@@ -215,28 +213,24 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-height: calc(100vh - 465px);
+  height: calc(100vh - 465px);
   overflow: auto;
 }
 
- 
 *::-webkit-scrollbar {
-  width: .5em;
-
+  width: 0.5em;
 }
- 
+
 *::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(154, 33, 33, 0.3);
 }
- 
+
 *::-webkit-scrollbar-thumb {
   background-color: #9a2143;
 
-    border-radius: 10px;
-    cursor: pointer;
-
+  border-radius: 10px;
+  cursor: pointer;
 }
-
 
 .chat-con .chat .chat-message {
   display: flex;
@@ -256,7 +250,6 @@ height: calc(100vh - 465px);
 }
 
 .chat .chat-message .message {
-
   background: #f4f4f7;
   padding: 10px;
   border-radius: 10px;
@@ -284,64 +277,55 @@ height: calc(100vh - 465px);
   height: 10px;
 }
 
-
 /* Media Queries */
 
 @media (max-width: 1600px) {
   .contact-list-con {
-padding-left: 10px;
-padding-right: 0;
+    padding-left: 10px;
+    padding-right: 0;
   }
-  .user-con{
+  .user-con {
     padding-right: 10px !important;
   }
-  .message-input-con{
+  .message-input-con {
     padding-inline: 20px !important;
   }
-
 }
-
 
 @media (max-width: 1110px) {
-
-.chat-con .chat{
-height: calc(100vh - 380px);
-}
-  .message-input-con .send-message-btn{
+  .chat-con .chat {
+    height: calc(100vh - 380px);
+  }
+  .message-input-con .send-message-btn {
     width: 20%;
   }
 }
 
 @media (max-width: 1028px) {
-.message-main-con{
-  padding-right: 10px;
-;
-}
-.message-main-con .chat-section{
-  width: 70%;
-}
+  .message-main-con {
+    padding-right: 10px;
+  }
+  .message-main-con .chat-section {
+    width: 70%;
+  }
 
-.contact-list-con{
-  width: 30%;
+  .contact-list-con {
+    width: 30%;
+  }
+  .chat .chat-message .message p {
+    max-width: 300px;
+  }
 }
-.chat .chat-message .message p{
-  max-width: 300px;
-}
-}
-
 
 @media (max-width: 870px) {
-.message-main-con .chat-section{
-  width: 65%;
-}
+  .message-main-con .chat-section {
+    width: 65%;
+  }
 
-.contact-list-con{
-  width: 35%;
-}
-.chat-con .chat{
-height: calc(100vh - 350px);
-
-
-}
-
+  .contact-list-con {
+    width: 35%;
+  }
+  .chat-con .chat {
+    height: calc(100vh - 350px);
+  }
 }

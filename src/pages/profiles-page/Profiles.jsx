@@ -44,11 +44,6 @@ const ProfilesListing = () => {
 
   useEffect(() => {
     fetchProfiles();
-
-    // Cleanup function to clear filters from local storage
-    return () => {
-      localStorage.removeItem("filters");
-    };
   }, []);
 
   const handlePageClick = (event) => {
@@ -93,8 +88,13 @@ const ProfilesListing = () => {
                   <img src={`${IMAGE_BASE_URL}/${profile.image}`} alt="" />
                 </div>
                 <div className="connection-info">
-                  <p>Name: {`${profile?.firstName} ${profile?.lastName}`}</p>
-                  <p>Nickname: {`${profile?.nickName}`}</p>
+                  <p>
+                    <strong>Name :</strong>{" "}
+                    {`${profile?.firstName} ${profile?.lastName}`}
+                  </p>
+                  <p>
+                    <strong>Nickname :</strong> {`${profile?.nickName}`}
+                  </p>
                   <div className="lastseen-con">
                     {/* <p>Online {connection.lastSeen} ago</p> */}
                     {/* <p>You & Her</p> */}
@@ -102,23 +102,41 @@ const ProfilesListing = () => {
                   <div className="border-1"></div>
                   <div className="desc-con-wrapper">
                     <div className="info-con">
-                      <p>{convertAgeToYearsAndMonths(profile.age)}, </p>
                       <p>
-                        {`${profile.height.feet} feet, ${profile.height.inches} inches`}
+                        <strong>Age :</strong>
+                        {convertAgeToYearsAndMonths(profile.age)},{" "}
+                      </p>
+                      <p>
+                        <strong>Height :</strong>
+                        {`${profile.height.feet}' ${profile.height.inches}"`}
                       </p>
                       {/* <p>{connection.marriedStatus}</p> */}
                     </div>
                     <div className="info-con">
-                      <p>{profile.tongue}</p>
-                      <p>{profile.address}</p>
+                      <p>
+                        <strong>Tongue :</strong>
+                        {profile.tongue}
+                      </p>
+                      <p>
+                        <strong>Address :</strong>
+                        {profile.address}
+                      </p>
                     </div>
                     <div className="info-con">
                       <p>
-                        {profile.religion}, {profile.cast}
+                        <strong>Religion :</strong>
+                        {profile.religion},
+                      </p>
+                      <p>
+                        <strong>Cast :</strong>
+                        {profile.cast}
                       </p>
                       {/* <p>{connection.occupation}</p> */}
                     </div>
-                    <p>{profile.education ? profile.education : ""}</p>
+                    <p>
+                      <strong>Education :</strong>
+                      {profile.education ? profile.education : ""}
+                    </p>
                   </div>
                   <div className="desc-con">
                     {/* <p>{connection.desc}</p> */}
