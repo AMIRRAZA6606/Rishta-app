@@ -160,3 +160,11 @@
   color: white;
   border-color: #9a2143;
 }
+ @media (max-width: 1020px) {
+  .connection-main-con{
+    padding-inline: 80px !important;
+  }
+.connection-info{
+  padding-left: 10px !important;
+}
+}

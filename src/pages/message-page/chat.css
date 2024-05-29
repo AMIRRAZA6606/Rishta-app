@@ -295,6 +295,10 @@ padding-right: 0;
   .user-con{
     padding-right: 10px !important;
   }
+  .message-input-con{
+    padding-inline: 20px !important;
+  }
+
 }
 
 
@@ -302,9 +306,10 @@ padding-right: 0;
 
 .chat-con .chat{
 height: calc(100vh - 380px);
-
-
 }
+  .message-input-con .send-message-btn{
+    width: 20%;
+  }
 }
 
 @media (max-width: 1028px) {

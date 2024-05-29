@@ -1,11 +1,10 @@
 import React from "react";
-import footerLogo from "../assets/images/footerLogo.png";
 import call from "../assets/icons/call.png";
 import email from "../assets/icons/email.png";
 import bestMatches from "../assets/images/best-matches.png";
+import footerLogo from "../assets/images/footerLogo.png";
 import privacy from "../assets/images/privacy.png";
 import verifiedProfile from "../assets/images/verified-profile.png";
-import { searchProfiles } from "../services/profiles";
 const Footer = () => {
   return (
     <>

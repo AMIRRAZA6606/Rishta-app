@@ -209,7 +209,7 @@ const Home = () => {
               <CommonSelect
                 options={genderOpts}
                 handleChange={setSelectedGender}
-                className="gender-select"
+                className="gender-select respon-class"
               />
               {errors.gender && <div className="error">{errors.gender}</div>}
             </div>
@@ -218,7 +218,7 @@ const Home = () => {
               <CommonSelect
                 options={startAgeOpts}
                 handleChange={setSelectedAgeStart}
-                className="age-select"
+                className="age-select respon-class"
               />
               {errors.ageStart && (
                 <div className="error">{errors.ageStart}</div>
@@ -229,7 +229,7 @@ const Home = () => {
               <CommonSelect
                 options={endAgeOpts}
                 handleChange={setSelectedAgeEnd}
-                className="age-select"
+                className="age-select respon-class"
               />
               {errors.ageEnd && <div className="error">{errors.ageEnd}</div>}
             </div>
@@ -240,7 +240,7 @@ const Home = () => {
               <CommonSelect
                 options={religionOpts}
                 handleChange={setSelectedReligion}
-                className="religion-select"
+                className="religion-select respon-class"
               />
               {errors.religion && (
                 <div className="error">{errors.religion}</div>
@@ -251,7 +251,7 @@ const Home = () => {
               <CommonSelect
                 options={countryOpts}
                 handleChange={setSelectedCountry}
-                className="living-select"
+                className="living-select respon-class"
               />
               {errors.country && <div className="error">{errors.country}</div>}
             </div>
@@ -260,7 +260,7 @@ const Home = () => {
               <CommonSelect
                 options={tongueOpts}
                 handleChange={setSelectedTongue}
-                className="tongue-select"
+                className="tongue-select respon-class"
               />
               {errors.tongue && <div className="error">{errors.tongue}</div>}
             </div>
@@ -271,7 +271,7 @@ const Home = () => {
               <CommonSelect
                 options={castOpts}
                 handleChange={setSelectedCast}
-                className="cast-select"
+                className="cast-select respon-class"
               />
               {errors.cast && <div className="error">{errors.cast}</div>}
             </div>
@@ -280,7 +280,7 @@ const Home = () => {
               <CommonSelect
                 options={sectOpts}
                 handleChange={setSelectedSect}
-                className="sect-select"
+                className="sect-select respon-class"
               />
               {errors.sect && <div className="error">{errors.sect}</div>}
             </div>
@@ -289,7 +289,7 @@ const Home = () => {
               <CommonSelect
                 options={heightOpts}
                 handleChange={setSelectedHeight}
-                className="height-select"
+                className="height-select respon-class"
               />
               {errors.height && <div className="error">{errors.height}</div>}
             </div>

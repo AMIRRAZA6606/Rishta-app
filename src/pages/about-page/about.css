@@ -19,10 +19,6 @@
 }
 .about-main-img img{
     width: 100%;
-    /* position: relative; */
-   
-  
-    
 }
 .about-content{
   
@@ -122,7 +118,7 @@ width: 100%;
 }
 
 .banner3-image{
-    width:35%;
+    width:50%;
     padding: 30px 120px 30px 0px;
   
 }
@@ -200,9 +196,8 @@ width: 100%;
 
 .cofounder-img-con{
     width: 100%;
-    justify-content: space-between;
-;
     display: flex;
+    gap: 46px;
 }
 
 .cofounder-img-con .img1{
@@ -210,18 +205,16 @@ position: relative;
 object-fit: cover;
 transform: scale(.8);
 
-width: 100%;
+width: 30%;
 
 }.cofounder-img-con .img2{
-width: 100%;
+width: 30%;
 object-fit: cover;
-
-
 position: relative;
 bottom: -100px;
 
 }.cofounder-img-con .img3{
-width: 100%;
+width: 30%;
 transform: scale(.8);
 object-fit: cover;
 
@@ -249,4 +242,157 @@ object-fit: cover;
         font-weight: 900;
 
 }
+
+
+@media (max-width: 1660px) {
+.about-main-con .cofounder-main-con{
+    padding-inline: 100px !important;
+}
+.carousel-con .react-multiple-carousel__arrow--left{
+    left: calc(1% + -7px);
+    background: #9a2143;
+            font-weight: 900;
+            z-index: 9999 !important;
+
+}
+.carousel-con .react-multiple-carousel__arrow--right{
+    right: calc(1% + -5px);
+        background: #9a2143;
+        font-weight: 900;
+
+}
+.banner3-text{
+    padding: 108px 100px;
+    font-size: 50px;
+}
+}
+
+ @media (max-width: 1400px) {
+.about-content span{
+    font-size: 80px;
+}
+.about-content p{
+    font-size: 18px;
+}
+.banner-text p{
+    font-size: 50px;
+}
+.carousel-con{
+    padding-left: 70px;
+}
+.banner3-text{
+    font-size: 40px;
+}
+.banner3-text p{
+    font-size: 40px;
+}
+.banner5-main .logo-img img{
+    width: 400px;
+}
+.banner5-text p{
+    font-size: 24px;
+}
+} 
+
+
+ @media (max-width: 1260px) {
+.about-main-con .cofounder-main-con{
+    padding-inline: 50px !important;
+}
+.banner3-image{
+    padding-right:80px !important ;
+}
+.banner3-text{
+    font-size: 30px;
+}
+.banner3-text p{
+    font-size: 30px;
+}
+.banner6-main .content{
+    font-size: 32px;
+}
+.banner6-main .content img{
+width: 200px;
+}
+} 
+
+ @media (max-width: 1020px) {
+ .carousel-con .react-multiple-carousel__arrow--left{
+    left: calc(1% + -3px);
+    background: #9a2143;
+            font-weight: 900;
+
+}
+.carousel-con .react-multiple-carousel__arrow--right{
+    right: calc(1% + -3px);
+        background: #9a2143;
+        font-weight: 900;
+
+}
+.banner3-text{
+    font-size: 25px;
+}
+.banner3-text p{
+    font-size: 25px;
+}
+.banner3-image{
+    padding-right:60px !important ;
+}
+.banner5-main .logo-img img{
+    width: 300px;
+}
+.banner5-text p{
+    font-size: 20px;
+}
+.banner6-main .content{
+    font-size: 28px;
+}
+.banner6-main .content img{
+width: 180px;
+}
+} 
+ @media (max-width: 978px) {
+.about-content span{
+    font-size: 60px;
+}
+.about-content p{
+    font-size: 16px;
+}
+.banner-text p{
+    font-size: 25px;
+}
+.banner3-text{
+    font-size: 20px;
+}
+.banner3-text p{
+    font-size: 20px;
+}
+.banner3-image{
+    padding-right:40px !important ;
+}
+.banner5-main .logo-img img{
+    width: 250px;
+}
+.banner5-text p{
+    font-size: 18px;
+}
+.banner6-main .content{
+    font-size: 24px;
+}
+.banner6-main .content img{
+width: 140px;
+}
+} 
+
+ @media (max-width: 770px) {
+.about-content span{
+    font-size: 50px;
+}
+.about-content p{
+    font-size: 14px;
+    max-width: 500px;
+}
+
+
+} 
 
