@@ -8,8 +8,8 @@ import Profiles from "./pages/profiles-page/Index";
 import Friends from "./pages/friends-page/Index";
 import { AuthProvider } from "./context/AuthContext";
 import PollingComponent from "./context/PollingComponent";
-import RequestsListing from "./pages/requests-page/Requests";
-import Chat from './pages/message-page/IndexChat'
+import RequestsListing from "./pages/requests-page/Index";
+import Chat from "./pages/message-page/IndexChat";
 import ContactUs from "./pages/contact-us-page/Index";
 
 function App() {
