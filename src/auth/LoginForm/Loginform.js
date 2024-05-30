@@ -63,6 +63,10 @@ export const Loginform = () => {
     }
   };
 
+  const handleForgotPasswordClick = () => {
+    navigate("/forgot-password");
+  };
+
   return (
     <div className="main-container">
       <div className="left-image-container">
@@ -109,7 +113,11 @@ export const Loginform = () => {
                 <input type="checkbox" id="rememberMe" name="rememberMe" />
                 <label htmlFor="rememberMe">Remember Me</label>
               </div>
-              <a href="abc" className="forgot-password">
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={handleForgotPasswordClick}
+                className="forgot-password"
+              >
                 Forgot Password?
               </a>
             </div>

@@ -11,6 +11,7 @@ import PollingComponent from "./context/PollingComponent";
 import RequestsListing from "./pages/requests-page/Index";
 import Chat from "./pages/message-page/IndexChat";
 import ContactUs from "./pages/contact-us-page/Index";
+import { ForgotPassword } from "./pages/forgot-password-page/ForgotPassword";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/friends" element={<Friends />} />
           <Route path="/requests" element={<RequestsListing />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </AuthProvider>
     </>
