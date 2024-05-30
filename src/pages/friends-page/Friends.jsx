@@ -20,12 +20,11 @@ const FriendsListing = () => {
     setLoading(true);
     try {
       const userId = localStorage.getItem("userId");
-      const response = await getMyFriends(userId, page, 7);
+      const response = await getMyFriends(userId, page, 5);
 
-      const { data, totalPages, currentPage } = response.data;
+      const { data } = response.data;
       setMyFriends(data?.data);
       setPageCount(data?.totalPages);
-      setCurrentPage(currentPage - 1);
 
       if (!data?.data?.length) {
         toast.info("No friends found");
@@ -51,13 +50,6 @@ const FriendsListing = () => {
     setCurrentPage(selectedPage.selected);
   };
 
-  const convertAgeToYearsAndMonths = (age) => {
-    const roundedAge = Math.round(age * 100) / 100;
-    const years = Math.floor(roundedAge);
-    const months = Math.round((roundedAge - years) * 12);
-    return `${years} yrs, ${months} months`;
-  };
-
   const openProfileDetails = (profileId) => {
     navigate(`/profile/${profileId}`);
   };
@@ -77,27 +69,37 @@ const FriendsListing = () => {
                   <img src={`${IMAGE_BASE_URL}/${friend.image}`} alt="" />
                 </div>
                 <div className="connection-info">
-                  <p>Name: {`${friend.firstName} ${friend.lastName}`}</p>
-                  <p>Nickname: {friend.nickName}</p>
+                  <p>
+                    <strong>Name:</strong>{" "}
+                    {`${friend.firstName} ${friend.lastName}`}
+                  </p>
+                  <p>
+                    <strong>Nickname:</strong> {friend.nickName}
+                  </p>
                   <div className="lastseen-con"></div>
                   <div className="border-1"></div>
                   <div className="desc-con-wrapper">
                     <div className="info-con">
                       <p>
-                        {convertAgeToYearsAndMonths(friend.age)},{" "}
-                        {`${friend.height.feet} feet, ${friend.height.inches} inches`}
+                        <strong>Tongue:</strong>
+                        {friend.tongue}
                       </p>
-                    </div>
-                    <div className="info-con">
-                      <p>{friend.tongue}</p>
-                      <p>{friend.address}</p>
+                      <p>
+                        <strong>Address:</strong>
+                        {friend.address}
+                      </p>
                     </div>
                     <div className="info-con">
                       <p>
-                        {friend.religion}, {friend.cast}
+                        <strong>Religion:</strong>
+                        {friend.religion}, <strong>Cast:</strong>
+                        {friend.cast}
                       </p>
                     </div>
-                    <p>{friend.education ? friend.education : ""}</p>
+                    <p>
+                      <strong>Education:</strong>
+                      {friend.education ? friend.education : ""}
+                    </p>
                   </div>
                   <div className="desc-con"></div>
                 </div>

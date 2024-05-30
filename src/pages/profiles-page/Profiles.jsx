@@ -16,10 +16,11 @@ const ProfilesListing = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchProfiles = async (page = 1) => {
+    console.log("inside--------first");
     setLoading(true);
     let data = JSON.parse(localStorage.getItem("filters")) || {};
     data.page = page;
-    data.pageSize = 7; // Set the page size here or retrieve from local storage if needed
+    data.pageSize = 5; // Set the page size here or retrieve from local storage if needed
 
     try {
       const response = await searchProfiles(data);
@@ -30,7 +31,7 @@ const ProfilesListing = () => {
         setProfiles(profiles);
         setPageCount(totalPages);
         setCurrentPage(currentPage - 1);
-        toast.success("Profiles fetched successfully!");
+        // toast.success("Profiles fetched successfully!");
         // Update the current page in local storage
         data.page = currentPage;
         localStorage.setItem("filters", JSON.stringify(data));
