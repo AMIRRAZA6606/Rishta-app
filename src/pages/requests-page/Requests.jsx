@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +9,7 @@ import { getMyReceivedFriendRequests } from "../../services/polling";
 import "./requests.css";
 
 const RequestsListing = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [notifications, setNotifications] = useState([]);
 
@@ -36,6 +38,7 @@ const RequestsListing = () => {
       };
       await acceptRequest(data);
       toast.success("Request accepted successfully!");
+      navigate("/chat");
     } catch (error) {
       toast.error("Something went wrong, please try again!");
     }
