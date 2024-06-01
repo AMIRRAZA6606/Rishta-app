@@ -7,6 +7,7 @@ import viewProfileIcon from "../../assets/icons/view-profile.png";
 import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
 import { getMyFriends } from "../../services/friends";
 import "./friends.css";
+import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 
 const FriendsListing = () => {
   const navigate = useNavigate();

@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
-import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 import { acceptRequest, rejectRequest } from "../../services/request";
 import { getMyReceivedFriendRequests } from "../../services/polling";
+import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
 
 import "./requests.css";
 
