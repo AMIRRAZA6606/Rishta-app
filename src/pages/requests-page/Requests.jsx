@@ -83,7 +83,7 @@ const RequestsListing = () => {
                           />
                         ) : (
                           <img
-                            style={{ width: "170px", borderRadius: "10px" }}
+                            style={{ width: "180px", borderRadius: "10px" }}
                             src={fallbackPersonImg}
                             alt=""
                           />
