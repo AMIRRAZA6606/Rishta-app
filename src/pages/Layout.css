@@ -224,7 +224,6 @@
 
 .notification-wrapper {
   display: flex;
-  align-items: center;
   position: relative;
 }
 

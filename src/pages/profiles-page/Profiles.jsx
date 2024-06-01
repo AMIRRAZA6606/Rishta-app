@@ -15,7 +15,6 @@ const ProfilesListing = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchProfiles = async (page = 1) => {
-    console.log("inside--------first");
     setLoading(true);
     let data = JSON.parse(localStorage.getItem("filters")) || {};
     data.page = page;
