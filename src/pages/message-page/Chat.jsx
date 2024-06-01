@@ -34,7 +34,7 @@ const Message = () => {
       } else {
         // Set first friend as initial friend as selected value
         setSelectedFriend(response?.data?.data?.data[0]);
-        toast.success("Chat loaded successfully!");
+        // toast.success("Chat loaded successfully!");
       }
     } catch (error) {
       toast.error("Something went wrong please try again");

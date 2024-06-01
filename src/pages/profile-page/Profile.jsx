@@ -17,7 +17,7 @@ const Profile = () => {
       try {
         const response = await getProfileDetails(profileId);
         setProfileData(response?.data?.data[0]);
-        toast.success("Profile details fetched successfully!");
+        // toast.success("Profile details fetched successfully!");
       } catch (err) {
         toast.error("Something went wrong, try again later");
       }
