@@ -10,8 +10,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-left: 93px;
-  padding-right: 115px;
+  padding-left: 250px;
+  padding-right: 250px;
   padding-top: 40px;
   padding-bottom: 60px;
 }
@@ -42,6 +42,8 @@
   border-radius: 10px;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .connection-con .connection-img {
   width: 25%;
@@ -159,4 +161,24 @@
   background-color: #9a2143;
   color: white;
   border-color: #9a2143;
+}
+
+
+@media (max-width: 1010px){
+  .connection-main-con {
+    padding-inline: 20px !important;
+  }
+  .connection-con{
+    padding: 15px;
+  }
+ .connection-main-con .connection-status-con{
+    padding-left: 20px !important;
+  }
+.connection-con .connection-info {
+  padding-right: 10px;
+  /* margin-left: 10px; */
+}
+.connection-img img{
+  width: 150px !important;
+}
 }

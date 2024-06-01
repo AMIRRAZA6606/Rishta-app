@@ -86,7 +86,9 @@ const ProfilesListing = () => {
             {profiles?.map((profile, index) => (
               <div key={index} className="connection-con">
                 <div className="connection-img">
-                  <img src={`${IMAGE_BASE_URL}/${profile.image}`} alt="" />
+                  <img src={`${profile.image}`} alt=""
+                    style={{ width: "200px", borderRadius: "10px" }}
+                  />
                 </div>
                 <div className="connection-info">
                   <p>
