@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Oval } from "react-loader-spinner";
 import searchIcon from "../../assets/icons/searchIcon.png";
 import archieveIcon from "../../assets/icons/archieveIcon.png";
 import messageSeenIcon from "../../assets/icons/messageSeenIcon.png";
@@ -21,9 +22,11 @@ const Message = () => {
   const [message, setMessage] = useState("");
   const [selectedFriend, setSelectedFriend] = useState(null);
   const chatEndRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchAllFriends = async () => {
     try {
+      setLoading(true);
       const userId = localStorage.getItem("userId");
       const response = await getMyFriends(userId);
       setFriends(response?.data?.data?.data);
@@ -36,6 +39,9 @@ const Message = () => {
     } catch (error) {
       console.log(error);
     }
+    //  finally {
+    //   setLoading(false);
+    // }
   };
 
   useEffect(() => {
@@ -53,6 +59,8 @@ const Message = () => {
           setMessages(response?.data?.data);
         } catch (error) {
           toast.error("Error while getting messages, please try again later");
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -125,116 +133,146 @@ const Message = () => {
   }, [messages]);
 
   return (
-    <div className="message-main-con">
-      <div className="contact-list-con">
-        <span>Chat</span>
-        <div className="search-con">
-          <img src={searchIcon} alt="" />
-          <input
-            type="text"
-            onChange={handleSearchChange}
-            placeholder="Search"
-          />
+    <>
+      {loading ? (
+        <div className="connection-main-con">
+          <div className="loader">
+            <Oval
+              height={80}
+              width={80}
+              color="#4fa94d"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#4fa94d"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          </div>
         </div>
-
-        <h2>Friends</h2>
-        <div className="friends-list-con">
-          {filteredFriends.map((obj) => (
-            <div
-              key={obj._id}
-              className="user-con"
-              onClick={() => handleFriendClick(obj._id)}
-            >
-              <div className="user-img">
-                <img
-                  className="chat-image"
-                  src={`${IMAGE_BASE_URL}/${obj.image}`}
-                  alt=""
-                />
-              </div>
-              <div className="user-details-con">
-                <div className="user-name-div">
-                  <div className="name">
-                    {obj.isPinChat && <img src={archieveIcon} alt="" />}
-                    <p>{`${obj.firstName} ${obj.lastName}`}</p>
-                  </div>
-                  <p className="time">{formatLastActiveTime(obj.lastActive)}</p>
-                </div>
-              </div>
-              <hr />
+      ) : (
+        <div className="message-main-con">
+          <div className="contact-list-con">
+            <span>Chat</span>
+            <div className="search-con">
+              <img src={searchIcon} alt="" />
+              <input
+                type="text"
+                onChange={handleSearchChange}
+                placeholder="Search"
+              />
             </div>
-          ))}
-        </div>
-      </div>
-      {selectedFriend ? (
-        <div className="chat-section">
-          <div className="chat-header">
-            <img src={`${IMAGE_BASE_URL}/${selectedFriend.image}`} alt="" />
-            <div>
-              <p className="name">{`${selectedFriend.firstName} ${selectedFriend.lastName}`}</p>
-              <p className="online">
-                Last active{" "}
-                {`${formatLastActiveTime(selectedFriend.lastActive)}`}
-              </p>
+
+            <h2>Friends</h2>
+            <div className="friends-list-con">
+              {filteredFriends.map((obj) => (
+                <div
+                  key={obj._id}
+                  className="user-con"
+                  onClick={() => handleFriendClick(obj._id)}
+                >
+                  <div className="user-img">
+                    <img
+                      className="chat-image"
+                      src={`${IMAGE_BASE_URL}/${obj.image}`}
+                      alt=""
+                    />
+                  </div>
+                  <div className="user-details-con">
+                    <div className="user-name-div">
+                      <div className="name">
+                        {obj.isPinChat && <img src={archieveIcon} alt="" />}
+                        <p>{`${obj.firstName} ${obj.lastName}`}</p>
+                      </div>
+                      <p className="time">
+                        {formatLastActiveTime(obj.lastActive)}
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              ))}
             </div>
           </div>
-          <div className="chat-con">
-            <div className="chat">
-              {messages.map((msg) => (
-                <div
-                  key={msg._id}
-                  className="chat-message"
-                  style={{
-                    alignSelf:
-                      msg.from === loggedInUserId ? "flex-end" : "flex-start",
-                  }}
-                >
-                  <div className="message">
-                    <p>{msg.message}</p>
+          {selectedFriend ? (
+            <div className="chat-section">
+              <div className="chat-header">
+                <img src={`${IMAGE_BASE_URL}/${selectedFriend.image}`} alt="" />
+                <div>
+                  <p className="name">{`${selectedFriend.firstName} ${selectedFriend.lastName}`}</p>
+                  <p className="online">
+                    Last active{" "}
+                    {`${formatLastActiveTime(selectedFriend.lastActive)}`}
+                  </p>
+                </div>
+              </div>
+              <div className="chat-con">
+                <div className="chat">
+                  {messages.map((msg) => (
                     <div
-                      className="message-time"
+                      key={msg._id}
+                      className="chat-message"
                       style={{
-                        justifyContent:
+                        alignSelf:
                           msg.from === loggedInUserId
                             ? "flex-end"
                             : "flex-start",
                       }}
                     >
-                      {msg.from === loggedInUserId && (
-                        <>
-                          {msg.isSeen && <img src={messageSeenIcon} alt="" />}
-                          {msg.isDelivered && (
-                            <img src={messageDeliverIcon} alt="" />
+                      <div className="message">
+                        <p>{msg.message}</p>
+                        <div
+                          className="message-time"
+                          style={{
+                            justifyContent:
+                              msg.from === loggedInUserId
+                                ? "flex-end"
+                                : "flex-start",
+                          }}
+                        >
+                          {msg.from === loggedInUserId && (
+                            <>
+                              {msg.isSeen && (
+                                <img src={messageSeenIcon} alt="" />
+                              )}
+                              {msg.isDelivered && (
+                                <img src={messageDeliverIcon} alt="" />
+                              )}
+                            </>
                           )}
-                        </>
-                      )}
-                      <p>{formatLastActiveTime(msg.createdAt)}</p>
+                          <p>{formatLastActiveTime(msg.createdAt)}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ))}
+                  <div ref={chatEndRef} />
                 </div>
-              ))}
-              <div ref={chatEndRef} />
+                <div className="message-input-con">
+                  <input
+                    type="text"
+                    className="message-input"
+                    value={message}
+                    placeholder="Type your message here..."
+                    onChange={handleMessageChange}
+                    autoFocus
+                  />
+                  <button
+                    onClick={handleSendMessage}
+                    className="send-message-btn"
+                  >
+                    Send message
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="message-input-con">
-              <input
-                type="text"
-                className="message-input"
-                value={message}
-                placeholder="Type your message here..."
-                onChange={handleMessageChange}
-                autoFocus
-              />
-              <button onClick={handleSendMessage} className="send-message-btn">
-                Send message
-              </button>
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
+          <ToastContainer />
         </div>
-      ) : (
-        ""
       )}
-      <ToastContainer />
-    </div>
+    </>
   );
 };
 
