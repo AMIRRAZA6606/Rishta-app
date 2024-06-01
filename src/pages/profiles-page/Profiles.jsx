@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import connectSticker from "../../assets/images/connectSticker.png";
@@ -16,7 +15,6 @@ const ProfilesListing = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchProfiles = async (page = 1) => {
-    console.log("inside--------first");
     setLoading(true);
     let data = JSON.parse(localStorage.getItem("filters")) || {};
     data.page = page;
@@ -24,20 +22,16 @@ const ProfilesListing = () => {
 
     try {
       const response = await searchProfiles(data);
-      if (!response?.data?.data?.profiles?.length) {
-        toast.info("No matching records found, try different filters");
-      } else {
-        const { profiles, totalPages, currentPage } = response.data.data;
-        setProfiles(profiles);
-        setPageCount(totalPages);
-        setCurrentPage(currentPage - 1);
-        // toast.success("Profiles fetched successfully!");
-        // Update the current page in local storage
-        data.page = currentPage;
-        localStorage.setItem("filters", JSON.stringify(data));
-      }
+      const { profiles, totalPages, currentPage } = response.data.data;
+      setProfiles(profiles);
+      setPageCount(totalPages);
+      setCurrentPage(currentPage - 1);
+
+      // Update the current page in local storage
+      data.page = currentPage;
+      localStorage.setItem("filters", JSON.stringify(data));
     } catch (error) {
-      toast.error("Something went wrong, please try again!");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -83,81 +77,82 @@ const ProfilesListing = () => {
           </div>
         ) : (
           <div className="connection-list-con">
-            {profiles?.map((profile, index) => (
-              <div key={index} className="connection-con">
-                <div className="connection-img">
-                  <img src={`${profile.image}`} alt=""
-                    style={{ width: "200px", borderRadius: "10px" }}
-                  />
-                </div>
-                <div className="connection-info">
-                  <p>
-                    <strong>Name :</strong>{" "}
-                    {`${profile?.firstName} ${profile?.lastName}`}
-                  </p>
-                  <p>
-                    <strong>Nickname :</strong> {`${profile?.nickName}`}
-                  </p>
-                  <div className="lastseen-con">
-                    {/* <p>Online {connection.lastSeen} ago</p> */}
-                    {/* <p>You & Her</p> */}
+            {profiles && profiles.length > 0 ? (
+              profiles?.map((profile, index) => (
+                <div key={index} className="connection-con">
+                  <div className="connection-img">
+                    <img src={`${IMAGE_BASE_URL}/${profile.image}`} alt="" />
                   </div>
-                  <div className="border-1"></div>
-                  <div className="desc-con-wrapper">
-                    <div className="info-con">
-                      <p>
-                        <strong>Age :</strong>
-                        {convertAgeToYearsAndMonths(profile.age)},{" "}
-                      </p>
-                      <p>
-                        <strong>Height :</strong>
-                        {`${profile.height.feet}' ${profile.height.inches}"`}
-                      </p>
-                      {/* <p>{connection.marriedStatus}</p> */}
-                    </div>
-                    <div className="info-con">
-                      <p>
-                        <strong>Tongue :</strong>
-                        {profile.tongue}
-                      </p>
-                      <p>
-                        <strong>Address :</strong>
-                        {profile.address}
-                      </p>
-                    </div>
-                    <div className="info-con">
-                      <p>
-                        <strong>Religion :</strong>
-                        {profile.religion},
-                      </p>
-                      <p>
-                        <strong>Cast :</strong>
-                        {profile.cast}
-                      </p>
-                      {/* <p>{connection.occupation}</p> */}
-                    </div>
+                  <div className="connection-info">
                     <p>
-                      <strong>Education :</strong>
-                      {profile.education ? profile.education : ""}
+                      <strong>Name :</strong>{" "}
+                      {`${profile?.firstName} ${profile?.lastName}`}
                     </p>
+                    <p>
+                      <strong>Nickname :</strong> {`${profile?.nickName}`}
+                    </p>
+                    <div className="lastseen-con">
+                      {/* <p>Online {connection.lastSeen} ago</p> */}
+                      {/* <p>You & Her</p> */}
+                    </div>
+                    <div className="border-1"></div>
+                    <div className="desc-con-wrapper">
+                      <div className="info-con">
+                        <p>
+                          <strong>Age :</strong>
+                          {convertAgeToYearsAndMonths(profile.age)},{" "}
+                        </p>
+                        <p>
+                          <strong>Height :</strong>
+                          {`${profile.height.feet}' ${profile.height.inches}"`}
+                        </p>
+                        {/* <p>{connection.marriedStatus}</p> */}
+                      </div>
+                      <div className="info-con">
+                        <p>
+                          <strong>Tongue :</strong>
+                          {profile.tongue}
+                        </p>
+                        <p>
+                          <strong>Address :</strong>
+                          {profile.address}
+                        </p>
+                      </div>
+                      <div className="info-con">
+                        <p>
+                          <strong>Religion :</strong>
+                          {profile.religion},
+                        </p>
+                        <p>
+                          <strong>Cast :</strong>
+                          {profile.cast}
+                        </p>
+                        {/* <p>{connection.occupation}</p> */}
+                      </div>
+                      <p>
+                        <strong>Education :</strong>
+                        {profile.education ? profile.education : ""}
+                      </p>
+                    </div>
+                    <div className="desc-con">
+                      {/* <p>{connection.desc}</p> */}
+                    </div>
                   </div>
-                  <div className="desc-con">
-                    {/* <p>{connection.desc}</p> */}
+                  <div className="connection-status-con">
+                    <p onClick={() => handleClick(profile._id)}>
+                      Like this profile?
+                    </p>
+                    <img src={connectSticker} alt="" />
+                    <p onClick={() => handleClick(profile._id)}>Connect Now</p>
                   </div>
                 </div>
-                <div className="connection-status-con">
-                  <p onClick={() => handleClick(profile._id)}>
-                    Like this profile?
-                  </p>
-                  <img src={connectSticker} alt="" />
-                  <p onClick={() => handleClick(profile._id)}>Connect Now</p>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No matching profiles, try with different filters</p>
+            )}
           </div>
         )}
       </div>
-      <ToastContainer />
       <div className="pagination">
         <ReactPaginate
           breakLabel="..."

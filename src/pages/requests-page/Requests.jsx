@@ -1,22 +1,34 @@
-import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
-import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
-import { useAuth } from "../../context/AuthContext";
+import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 import { acceptRequest, rejectRequest } from "../../services/request";
+import { getMyReceivedFriendRequests } from "../../services/polling";
 
 import "./requests.css";
 
 const RequestsListing = () => {
-  const { notifications } = useAuth();
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
-    if (notifications) {
+  const fetchRequests = async () => {
+    try {
+      setLoading(true);
+      const userId = localStorage.getItem("userId");
+      const response = await getMyReceivedFriendRequests(userId);
+      setNotifications(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
       setLoading(false);
     }
-  }, [notifications]);
+  };
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   const handleAcceptRequest = async (requestId) => {
     try {
@@ -26,6 +38,7 @@ const RequestsListing = () => {
       };
       await acceptRequest(data);
       toast.success("Request accepted successfully!");
+      navigate("/chat");
     } catch (error) {
       toast.error("Something went wrong, please try again!");
     }
@@ -73,22 +86,19 @@ const RequestsListing = () => {
                 {notifications?.map((notification, index) => (
                   <div key={index} className="connection-con">
                     <div className="connection-img">
-
-                      {
-                        notification?.from?.image ? (
-                          <img
-                            style={{ width: "180px", borderRadius: "10px" }}
-                            src={`${notification?.from?.image}`}
-                            alt=""
-                          />
-                        ) : (
-                          <img
-                            style={{ width: "180px", borderRadius: "10px" }}
-                            src={fallbackPersonImg}
-                            alt=""
-                          />
-                        )
-                      }
+                      {notification?.from?.image ? (
+                        <img
+                          style={{ width: "180px", borderRadius: "10px" }}
+                          src={`${notification?.from?.image}`}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          style={{ width: "180px", borderRadius: "10px" }}
+                          src={fallbackPersonImg}
+                          alt=""
+                        />
+                      )}
                     </div>
                     <div className="connection-info">
                       <p>

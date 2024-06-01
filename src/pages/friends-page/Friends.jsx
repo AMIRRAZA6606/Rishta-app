@@ -58,85 +58,73 @@ const FriendsListing = () => {
     navigate("/chat");
   };
 
-  console.log(friends, "friends")
+  console.log(friends, "friends");
 
   return (
     <>
       <div className="connection-main-con">
         <div className="my-friend-class">
           <div className="connection-list-con">
-            {friends.map((friend, index) => (
-              <div key={index} className="connection-con">
-                <div className="connection-img">
-                  {
-                    friend.image ? (
+            {friends && friends.length > 0
+              ? friends.map((friend, index) => (
+                  <div key={index} className="connection-con">
+                    <div className="connection-img">
+                      <img src={`${IMAGE_BASE_URL}/${friend.image}`} alt="" />
+                    </div>
+                    <div className="connection-info">
+                      <p>
+                        <strong>Name:</strong>{" "}
+                        {`${friend.firstName} ${friend.lastName}`}
+                      </p>
+                      <p>
+                        <strong>Nickname:</strong> {friend.nickName}
+                      </p>
+                      <div className="lastseen-con"></div>
+                      <div className="border-1"></div>
+                      <div className="desc-con-wrapper">
+                        <div className="info-con">
+                          <p>
+                            <strong>Tongue:</strong>
+                            {friend.tongue}
+                          </p>
+                          <p>
+                            <strong>Address:</strong>
+                            {friend.address}
+                          </p>
+                        </div>
+                        <div className="info-con">
+                          <p>
+                            <strong>Religion:</strong>
+                            {friend.religion}, <strong>Cast:</strong>
+                            {friend.cast}
+                          </p>
+                        </div>
+                        <p>
+                          <strong>Education:</strong>
+                          {friend.education ? friend.education : ""}
+                        </p>
+                      </div>
+                      <div className="desc-con"></div>
+                    </div>
+                    <div className="connection-status-con">
                       <img
-                        style={{ width: "170px", borderRadius: "10px" }}
-                        src={`${friend.image}`}
+                        className="chat-icon"
+                        onClick={openChatWindow}
+                        src={chatIcon}
                         alt=""
                       />
-                    ) : (
+                    </div>
+                    <div className="connection-status-con">
                       <img
-                        style={{ width: "170px", borderRadius: "10px" }}
-                        src={fallbackPersonImg}
+                        className="chat-icon"
+                        onClick={() => openProfileDetails(friend._id)}
+                        src={viewProfileIcon}
                         alt=""
                       />
-                    )
-                  }
-                </div>
-                <div className="connection-info">
-                  <p>
-                    <strong>Name:</strong>{" "}
-                    {`${friend.firstName} ${friend.lastName}`}
-                  </p>
-                  <p>
-                    <strong>Nickname:</strong> {friend.nickName}
-                  </p>
-                  <div className="lastseen-con"></div>
-                  <div className="border-1"></div>
-                  <div className="desc-con-wrapper">
-                    <div className="info-con">
-                      <p>
-                        <strong>Tongue:</strong>
-                        {friend.tongue}
-                      </p>
-                      <p>
-                        <strong>Address:</strong>
-                        {friend.address}
-                      </p>
                     </div>
-                    <div className="info-con">
-                      <p>
-                        <strong>Religion:</strong>
-                        {friend.religion}, <strong>Cast:</strong>
-                        {friend.cast}
-                      </p>
-                    </div>
-                    <p>
-                      <strong>Education:</strong>
-                      {friend.education ? friend.education : ""}
-                    </p>
                   </div>
-                  <div className="desc-con"></div>
-                </div>
-                <div className="connection-status-con">
-                  <img
-                    className="chat-icon"
-                    onClick={openChatWindow}
-                    src={chatIcon}
-                    alt=""
-                  />
-                </div>
-                <div className="connection-status-con">
-                  <img
-                    className="chat-icon"
-                    onClick={() => openProfileDetails(friend._id)}
-                    src={viewProfileIcon}
-                    alt=""
-                  />
-                </div>
-              </div>
-            ))}
+                ))
+              : "Make some friends"}
           </div>
         </div>
       </div>
