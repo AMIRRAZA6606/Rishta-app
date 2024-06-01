@@ -5,7 +5,6 @@ import {
   getProfileDetails,
   sendFriendRequest,
 } from "../../services/profileDetails";
-import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 
 const Profile = () => {
   const { profileId } = useParams();

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
-import { IMAGE_BASE_URL } from "../../config/systemConfigs";
+import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
 import { useAuth } from "../../context/AuthContext";
 import { acceptRequest, rejectRequest } from "../../services/request";
 
@@ -69,14 +69,26 @@ const RequestsListing = () => {
                 <p>No requests found!</p>
               </div>
             ) : (
-              <div>
+              <>
                 {notifications?.map((notification, index) => (
                   <div key={index} className="connection-con">
                     <div className="connection-img">
-                      <img
-                        src={`${IMAGE_BASE_URL}/${notification?.from?.image}`}
-                        alt=""
-                      />
+
+                      {
+                        notification?.from?.image ? (
+                          <img
+                            style={{ width: "180px", borderRadius: "10px" }}
+                            src={`${notification?.from?.image}`}
+                            alt=""
+                          />
+                        ) : (
+                          <img
+                            style={{ width: "170px", borderRadius: "10px" }}
+                            src={fallbackPersonImg}
+                            alt=""
+                          />
+                        )
+                      }
                     </div>
                     <div className="connection-info">
                       <p>
@@ -87,6 +99,7 @@ const RequestsListing = () => {
                         <strong>Nickname :</strong>{" "}
                         {`${notification?.from?.nickName}`}
                       </p>
+                      <hr />
                       <div className="desc-con-wrapper">
                         <div className="info-con">
                           <p>
@@ -127,6 +140,7 @@ const RequestsListing = () => {
                     </div>
                     <div className="connection-status-con">
                       <button
+                        className="request-accept-btn"
                         onClick={() => {
                           handleAcceptRequest(notification.id);
                         }}
@@ -134,6 +148,7 @@ const RequestsListing = () => {
                         Accept
                       </button>
                       <button
+                        className="reject-accept-btn"
                         onClick={() => {
                           handleRejectRequest(notification.id);
                         }}
@@ -143,7 +158,7 @@ const RequestsListing = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </>
             )}
           </div>
         )}
