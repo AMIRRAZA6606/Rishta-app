@@ -70,7 +70,7 @@ const Profile = () => {
       <div className="profile-bg"></div>
       <div className="profile-info">
         <div className="profile-img">
-          <img src={`${IMAGE_BASE_URL}/${profile?.image}`} alt="Profile" />
+          <img src={`${profile?.image}`} alt="Profile" />
         </div>
         <div className="info-con">
           <div className="profile-name">
