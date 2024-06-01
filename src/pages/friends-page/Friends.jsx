@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import chatIcon from "../../assets/icons/chat.png";
 import viewProfileIcon from "../../assets/icons/view-profile.png";
-import "./friends.css";
+import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
 import { getMyFriends } from "../../services/friends";
-import { IMAGE_BASE_URL } from "../../config/systemConfigs";
+import "./friends.css";
 
 const FriendsListing = () => {
   const navigate = useNavigate();
@@ -58,6 +58,8 @@ const FriendsListing = () => {
     navigate("/chat");
   };
 
+  console.log(friends, "friends")
+
   return (
     <>
       <div className="connection-main-con">
@@ -66,7 +68,21 @@ const FriendsListing = () => {
             {friends.map((friend, index) => (
               <div key={index} className="connection-con">
                 <div className="connection-img">
-                  <img src={`${IMAGE_BASE_URL}/${friend.image}`} alt="" />
+                  {
+                    friend.image ? (
+                      <img
+                        style={{ width: "170px", borderRadius: "10px" }}
+                        src={`${friend.image}`}
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        style={{ width: "170px", borderRadius: "10px" }}
+                        src={fallbackPersonImg}
+                        alt=""
+                      />
+                    )
+                  }
                 </div>
                 <div className="connection-info">
                   <p>
