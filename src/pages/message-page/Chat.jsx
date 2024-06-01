@@ -3,7 +3,6 @@ import searchIcon from "../../assets/icons/searchIcon.png";
 import archieveIcon from "../../assets/icons/archieveIcon.png";
 import messageSeenIcon from "../../assets/icons/messageSeenIcon.png";
 import messageDeliverIcon from "../../assets/icons/messageDeliverIcon.png";
-import chatUserImg from "../../assets/images/chatUserImg.png";
 import { toast, ToastContainer } from "react-toastify";
 import { getMyFriends } from "../../services/friends";
 import { getMessages, sendMessage } from "../../services/chat";
@@ -30,14 +29,12 @@ const Message = () => {
       setFriends(response?.data?.data?.data);
 
       if (!response?.data?.data?.data?.length) {
-        toast.info("Make some friends!");
       } else {
         // Set first friend as initial friend as selected value
         setSelectedFriend(response?.data?.data?.data[0]);
-        // toast.success("Chat loaded successfully!");
       }
     } catch (error) {
-      toast.error("Something went wrong please try again");
+      console.log(error);
     }
   };
 
@@ -234,7 +231,7 @@ const Message = () => {
           </div>
         </div>
       ) : (
-        <p>Select friend from friend list</p>
+        ""
       )}
       <ToastContainer />
     </div>

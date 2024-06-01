@@ -2,21 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 import { IMAGE_BASE_URL } from "../../config/systemConfigs";
-import { useAuth } from "../../context/AuthContext";
 import { acceptRequest, rejectRequest } from "../../services/request";
+import { getMyReceivedFriendRequests } from "../../services/polling";
 
 import "./requests.css";
 
 const RequestsListing = () => {
-  const { notifications } = useAuth();
-
   const [loading, setLoading] = useState(true);
+  const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
-    if (notifications) {
+  const fetchRequests = async () => {
+    try {
+      setLoading(true);
+      const userId = localStorage.getItem("userId");
+      const response = await getMyReceivedFriendRequests(userId);
+      setNotifications(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
       setLoading(false);
     }
-  }, [notifications]);
+  };
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   const handleAcceptRequest = async (requestId) => {
     try {
