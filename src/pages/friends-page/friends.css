@@ -150,6 +150,8 @@ border-radius: 7px;
 
 .my-friend-class {
   display: flex ;
+  justify-content: center;
+  align-items: center;
 }
 .page-item {
   margin: 0 5px;
@@ -172,11 +174,25 @@ border-radius: 7px;
   color: white;
   border-color: #9a2143;
 }
-@media (max-width: 1020px) {
+
+
+@media (max-width: 1412px){
   .friends-main-con {
-    padding-inline: 80px !important;
+    padding-inline: 20px !important;
   }
-  .friends-connection-info {
-    padding-left: 10px !important;
+  .friends-connection-con{
+    padding: 15px;
   }
+ .friends-main-con .connection-status-con{
+    padding-left: 20px !important;
+  }
+.friends-connection-con .friends-connection-info {
+  padding-right: 10px;
+  padding-left: 20px;
+
+  /* margin-left: 10px; */
+}
+.friends-connection-img img{
+  width: 150px !important;
+}
 }
