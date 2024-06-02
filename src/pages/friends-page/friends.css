@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-.connection-main-con {
+.friends-main-con {
   font-family: "Poppins", sans-serif !important;
   font-style: normal !important;
 }
 
-.connection-main-con {
+.friends-main-con {
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
   width: 50%;
   cursor: pointer;
 }
-.connection-list-con {
+.friends-connection-list-con {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,24 +36,25 @@
 .connection-status-con p {
   cursor: pointer; /* Change cursor to hand shape */
 }
-.connection-con {
-  padding: 30px;
+.friends-connection-con {
+    padding: 30px;
   border: 2px solid black;
   border-radius: 10px;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.connection-con .connection-img {
-  width: 15%;
-  height: 90%;
+.friends-connection-con .friends-connection-img {
+
+
 }
-.connection-img img {
-  width: 90%;
-  /* height: 100%; */
-  object-fit: cover;
+.friends-connection-img img {
+  width: 300px;
+
 }
 
-.connection-con .connection-info {
+.friends-connection-con .friends-connection-info {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -65,34 +66,35 @@
   border-right: 4px solid #ca3c5e;
 }
 
-.connection-info .lastseen-con {
+.friends-connection-info .lastseen-con {
   display: flex;
   gap: 32px;
 }
-.connection-info .border-1 {
+.friends-connection-info .border-1 {
   width: 100%;
   height: 4px;
   background: #ca3c5e;
   margin-block: 10px;
 }
-.desc-con-wrapper {
+.friends-connection-info .friends-desc-con-wrapper {
   display: flex;
+
   flex-direction: column;
   gap: 2px;
   max-width: 300px;
 }
 
-.connection-info .info-con {
+.friends-connection-info .info-con {
   display: flex;
   width: 100%;
   justify-content: space-between;
   /* gap: 20px; */
 }
-.connection-info .desc-con {
+.friends-connection-info .desc-con {
   padding-top: 4px;
   width: 70%;
 }
-.connection-main-con .connection-status-con {
+.friends-main-con .connection-status-con {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +140,7 @@
 }
 
 .my-friend-class {
-  display: flex;
+  display: flex ;
 }
 .page-item {
   margin: 0 5px;
@@ -162,10 +164,10 @@
   border-color: #9a2143;
 }
 @media (max-width: 1020px) {
-  .connection-main-con {
+  .friends-main-con {
     padding-inline: 80px !important;
   }
-  .connection-info {
+  .friends-connection-info {
     padding-left: 10px !important;
   }
 }
