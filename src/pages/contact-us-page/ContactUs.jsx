@@ -89,23 +89,23 @@ const ContactUs = () => {
                 Say something to start a live chat!
               </p>
               <div className="side-details">
-                <div className="info">
+                <div className="contact-us-info">
                   <span>
                     <img src={phoneIcon} alt="" />
                   </span>
-                  <h2>+92 300 9465050</h2>
+                  <p>+92 300 9465050</p>
                 </div>
-                <div className="info">
+                <div className="contact-us-info">
                   <span>
                     <img src={emailIcon} alt="" />
                   </span>
-                  <h2>salmanyousaf292001@gmail.com</h2>
+                  <p>salmanyousaf292001@gmail.com</p>
                 </div>
-                <div className="info">
+                <div className="contact-us-info">
                   <span>
                     <img src={locationIcon} alt="" />
                   </span>
-                  <h2>Lahore, Pakistan</h2>
+                  <p>Lahore, Pakistan</p>
                 </div>
               </div>
             </div>

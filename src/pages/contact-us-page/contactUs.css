@@ -57,11 +57,14 @@
     padding-top: 110px;
     padding-bottom: 250px;
 }
-.side-details .info{
+.side-details .contact-us-info{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFFFFF;
 }
 
 .side-details .info span{
@@ -219,7 +222,13 @@ cursor: pointer;
 }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 970px)
+ {
+    .side-details .contact-us-info{
+        font-size: 12px;
+    }
+ }
+    @media (max-width: 770px) {
 .contact-us-main-con{
     
     padding-left: 20px;
