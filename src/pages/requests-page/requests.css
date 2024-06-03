@@ -46,12 +46,15 @@
   align-items: center;
 }
 .connection-con .connection-img {
-  width: 25%;
+width: 180px;
+height: 180px;
+overflow: hidden;
 }
 .connection-img img {
-  width: 90%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 7px;
 }
 
 .connection-con .connection-info {
@@ -164,9 +167,7 @@
   margin-bottom: 10px;
 }
 
-.my-friend-class {
-  display: flex;
-}
+
 .page-item {
   margin: 0 5px;
 }
@@ -190,7 +191,7 @@
 }
 
 
-@media (max-width: 1010px){
+@media (max-width: 1412px){
   .connection-main-con {
     padding-inline: 20px !important;
   }
@@ -202,6 +203,7 @@
   }
 .connection-con .connection-info {
   padding-right: 10px;
+  padding-left: 20px;
   /* margin-left: 10px; */
 }
 .connection-img img{

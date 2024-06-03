@@ -6,6 +6,8 @@ import {
   sendFriendRequest,
 } from "../../services/profileDetails";
 
+import { IMAGE_BASE_URL } from "../../config/systemConfigs";
+
 const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfileData] = useState(null);
@@ -69,7 +71,7 @@ const Profile = () => {
       <div className="profile-bg"></div>
       <div className="profile-info">
         <div className="profile-img">
-          <img src={`${profile?.image}`} alt="Profile" />
+          <img src={`${IMAGE_BASE_URL}/${profile?.image}`} alt="Profile" />
         </div>
         <div className="info-con">
           <div className="profile-name">
