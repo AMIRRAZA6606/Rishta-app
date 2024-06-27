@@ -61,7 +61,7 @@ const ContactUs = () => {
         email,
         message,
       });
-      toast.success(response.data.message);
+      // toast.success(response.data.message);
       setFirstName("");
       setLastName("");
       setEmail("");

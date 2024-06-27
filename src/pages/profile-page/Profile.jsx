@@ -12,6 +12,7 @@ const Profile = () => {
   const { profileId } = useParams();
   const [profile, setProfileData] = useState(null);
   const [requestBtnText, setRequestBtnText] = useState("Request +");
+  const [disableRequestBtn, setDisableRequestBtn] = useState(false);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -34,7 +35,7 @@ const Profile = () => {
       toast.info("You can not send request to yourself");
       return;
     }
-    setRequestBtnText("Pending...");
+    setRequestBtnText("Pending");
     try {
       const data = {
         from: userId,
@@ -42,10 +43,10 @@ const Profile = () => {
       };
 
       const response = await sendFriendRequest(data);
-      toast.info(
-        response?.data?.message
-        // "Friend request sent successfully!"
-      );
+      setRequestBtnText("Sent");
+      setDisableRequestBtn(true);
+
+      // toast.info(response?.data?.message);
     } catch (err) {
       if (err?.response?.status === 400 && profileId === userId) {
         toast.info("You can not send request to yourself");
@@ -80,7 +81,10 @@ const Profile = () => {
               {convertAgeToYearsAndMonths(profile?.age)}
             </div>
           </div>
-          <button onClick={() => sendRequest(profile._id)}>
+          <button
+            disabled={disableRequestBtn}
+            onClick={() => sendRequest(profile._id)}
+          >
             {requestBtnText}
           </button>
         </div>
