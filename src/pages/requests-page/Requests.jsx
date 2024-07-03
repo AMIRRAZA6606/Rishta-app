@@ -7,6 +7,7 @@ import { getMyReceivedFriendRequests } from "../../services/polling";
 import fallbackPersonImg from "../../assets/images/fallbackPersonImg.png";
 
 import "./requests.css";
+import { IMAGE_BASE_URL } from "../../config/systemConfigs";
 
 const RequestsListing = () => {
   const navigate = useNavigate();
@@ -37,7 +38,6 @@ const RequestsListing = () => {
         status: "accepted",
       };
       await acceptRequest(data);
-      toast.success("Request accepted successfully!");
       navigate("/chat");
     } catch (error) {
       toast.error("Something went wrong, please try again!");
@@ -51,7 +51,7 @@ const RequestsListing = () => {
         status: "rejected",
       };
       await rejectRequest(data);
-      toast.success("Request rejected successfully!");
+      navigate("/home");
     } catch (error) {
       toast.error("Something went wrong, please try again!");
     }
@@ -89,7 +89,7 @@ const RequestsListing = () => {
                       {notification?.from?.image ? (
                         <img
                           style={{ width: "180px", borderRadius: "10px" }}
-                          src={`${notification?.from?.image}`}
+                          src={`${IMAGE_BASE_URL}/${notification?.from?.image}`}
                           alt=""
                         />
                       ) : (

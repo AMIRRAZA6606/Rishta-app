@@ -46,9 +46,9 @@
   align-items: center;
 }
 .connection-con .connection-img {
-width: 180px;
-height: 180px;
-overflow: hidden;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
 }
 .connection-img img {
   width: 100%;
@@ -106,31 +106,32 @@ overflow: hidden;
   font-weight: 600;
   gap: 23px;
 }
-.connection-status-con .request-accept-btn{
-   background: #9a2143;
-  color: white;
+.connection-status-con .request-accept-btn {
   border: none;
   border-radius: 3px;
-
   padding: 4px 14px;
   cursor: pointer;
   font-size: 12px;
+
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 
+  background: #9a2143;
+  color: white;
 }
 
-.connection-status-con .reject-accept-btn{
-   background: #e5efef;
-  color: #9a2143;
+.connection-status-con .reject-accept-btn {
   border: none;
   border-radius: 3px;
-  padding: 4px 15px;
+  padding: 4px 14px;
   cursor: pointer;
   font-size: 12px;
+
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 
+  background: #9a2143;
+  color: white;
 }
 .connection-status-con img {
   width: 60px;
@@ -167,7 +168,6 @@ overflow: hidden;
   margin-bottom: 10px;
 }
 
-
 .page-item {
   margin: 0 5px;
 }
@@ -190,23 +190,22 @@ overflow: hidden;
   border-color: #9a2143;
 }
 
-
-@media (max-width: 1412px){
+@media (max-width: 1412px) {
   .connection-main-con {
     padding-inline: 20px !important;
   }
-  .connection-con{
+  .connection-con {
     padding: 15px;
   }
- .connection-main-con .connection-status-con{
+  .connection-main-con .connection-status-con {
     padding-left: 20px !important;
   }
-.connection-con .connection-info {
-  padding-right: 10px;
-  padding-left: 20px;
-  /* margin-left: 10px; */
-}
-.connection-img img{
-  width: 150px !important;
-}
+  .connection-con .connection-info {
+    padding-right: 10px;
+    padding-left: 20px;
+    /* margin-left: 10px; */
+  }
+  .connection-img img {
+    width: 150px !important;
+  }
 }
